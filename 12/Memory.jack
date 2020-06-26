@@ -1,0 +1,165 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Memory.jack
+
+/**
+ * This library provides two services: direct access to the computer's main
+ * memory (RAM), and allocation and recycling of memory blocks. The Hack RAM
+ * consists of 32,768 words, each holding a 16-bit binary number.
+ */ 
+class Memory {
+
+	static Array ram;
+	static Array heap;
+	
+	static int NEXT, LENGTH, ALLOCATED_NEXT_MARKER;
+	static Array NO_BLOCK;
+	
+	static Array free_list;
+	
+
+    /** Initializes the class. */
+    function void init() {
+		
+		let ram = 0;
+
+		let heap = 2048;
+		
+		let NEXT = -2;
+		let LENGTH = -1;
+		
+		let ALLOCATED_NEXT_MARKER = -1;
+		let NO_BLOCK = 16000;//383;	// last word in heap
+		
+		let heap[0] = null;			// next
+		let heap[1] = 14334;	// length
+		let free_list = heap + 2;
+		let free_list[NEXT] = heap[0];
+		let free_list[LENGTH] = heap[1];
+		
+		return;
+    }
+
+    /** Returns the RAM value at the given address. */
+    function int peek(int address) {
+		return ram[address];
+    }
+
+    /** Sets the RAM value at the given address to the given value. */
+    function void poke(int address, int value) {
+		let ram[address] = value;
+		
+		return;
+    }
+    
+    // very simple alloc implementation, passes the Memory.tst test
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. 
+    function int alloc(int size) {
+		var Array block;
+		
+		let block = free_list;
+		let free_list = block + size;
+		
+		return block;
+	}       
+    
+    // this alloc implementation atempts to use first fit algorithm but
+    // does not pass the test
+    /** Finds an available RAM block of the given size and returns
+     *  a reference to its base address. */
+    function int alloc2(int size) {
+		var Array current, ante_current;
+		var Array block;
+		var boolean exit_loop;
+		var int old_current_length;
+		
+		// find 'ante_current', last segment in the free_list (next node is 0)
+		let ante_current = free_list;
+		let current = free_list;
+		let ante_current = Memory.findLast(current);		
+		
+		// first-fit algorithm
+		let current = free_list;
+		let block = NO_BLOCK;
+		let old_current_length = 0;
+		let exit_loop = false;
+		while (~(exit_loop)) { 
+		    if (current[NEXT] = ALLOCATED_NEXT_MARKER) {
+				let current = current[NEXT];
+			}
+			if (~( current[LENGTH] < (size + 2) )) {
+				let block = current; 
+				let old_current_length = current[LENGTH];
+				let exit_loop = true;
+			}
+			if (current[NEXT] = null) {
+				let exit_loop = true;
+			}
+			let current = current[NEXT];
+		}
+		//////////////////////
+	
+		if (~(block = NO_BLOCK)) {
+		let block[NEXT] = ALLOCATED_NEXT_MARKER;	// identify allocated block
+		let block[LENGTH] = size;
+		}
+		
+		if (block = NO_BLOCK) {		// in case no fitting segment is found
+			//let block[LENGTH] = 0;
+			//do Output.printInt(NO_BLOCK);			// cannot debug because String output needs alloc
+			//do Output.printChar(32);
+			//Sys.error(6);
+		}
+		
+		//if (~(block = NO_BLOCK)) {
+			let current = block + size + 2;
+			let current[NEXT] = null;					// update 'current' as last free segment in the free_list
+			let current[LENGTH] = old_current_length - size - 2;
+			
+			// update first-to-last free segment in the free_list. Now 'block' should be out of free_list
+			let ante_current[NEXT] = current;			
+			
+			// check if somehow block ended up in free_list
+			if ((free_list[NEXT] = block - 2) | (free_list[NEXT] = ALLOCATED_NEXT_MARKER)) {
+				let free_list[NEXT] = current;
+			}
+		//}
+		
+		return block;
+	}
+
+	// finds last segment in the free_list (next node is 0)
+	// used by alloc2
+	function Array findLast(Array current) {
+		var boolean exit_loop;
+		var Array ante_current;
+		
+		let exit_loop = false;
+		while (~(exit_loop)) { 				
+			if (current[NEXT] = null) {
+				let ante_current = current;
+				let exit_loop = true;
+			}
+			else {
+				let current = current[NEXT];
+			}
+		}
+	
+	return ante_current;
+	}
+	
+    /** De-allocates the given object (cast as an array) by making
+     *  it available for future allocations. */
+    function void deAlloc(Array o) {
+		var Array last_segment;
+		
+		let last_segment = Memory.findLast(free_list);		// find last node in free_list
+		
+		let o[NEXT] = null;		// release o from memory, add it to free_list as last node
+		let last_segment[NEXT] = o;	// update last_segment to be next-to-last			
+		
+		return;
+    } 
+}
