@@ -1,0 +1,68 @@
+// Tetris game coded as project for chapter 9
+
+/** Initializes a new Tetris game and starts running it. */
+class Main {
+    function void main() {
+        var TetrisGame game;
+        var Array output;
+        var String player;
+        var int random_seed;
+        
+        let output = Main.promptName();
+        let player = output[0];
+        let random_seed = output[1];
+		
+        let game = TetrisGame.new(player, random_seed);
+        do game.run();
+        
+        do player.dispose();
+        do output.dispose();
+        do game.dispose();
+        
+    return;
+    }
+
+/** Introductory screen, asks player's name. */
+	function Array promptName() {
+		var String player;
+		var int random_seed;
+		var Array out;
+		var String output1;
+		var String output2;
+		var String output3;
+		var String output4;
+		var String output5;
+		
+		let out = Array.new(2);
+		let output1 = "A TETRIS GAME";
+		let output2 = "written in the Jack language by G.G.";
+		let output3 = "Please enter your name (10 chars max): ";
+		let output4 = "Please enter a number (max 32767): ";
+		let output5 = "controls: upwards arrow - rotate piece; arrows - movement";  
+		
+		do Output.moveCursor(4, 25);
+		do Output.printString(output1);
+		do Output.moveCursor(6, 15);
+		do Output.printString(output2);
+		do Output.moveCursor(12, 4);
+		do Output.printString(output5);
+		do Output.moveCursor(16, 10);
+		let random_seed = Keyboard.readInt(output4);
+		do Output.moveCursor(20, 8);
+		let player = Keyboard.readLine(output3);
+
+		
+		let out[0] = player;
+		let out[1] = random_seed;
+		
+		do Sys.wait(500);
+		do Screen.clearScreen();
+		do output1.dispose();
+		do output2.dispose();
+		do output3.dispose();
+		do output4.dispose();
+		do output5.dispose();
+			
+	return out;
+	}
+}
