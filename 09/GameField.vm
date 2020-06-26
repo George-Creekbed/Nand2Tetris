@@ -1,0 +1,393 @@
+function GameField.new 2
+push constant 3
+call Memory.alloc 1
+pop pointer 0
+push argument 1
+pop this 1
+push argument 0
+pop this 2
+push this 1
+push this 2
+call Math.multiply 2
+call Array.new 1
+pop this 0
+push pointer 0
+return
+function GameField.dispose 0
+push argument 0
+pop pointer 0
+push this 0
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function GameField.set 1
+push argument 0
+pop pointer 0
+push argument 2
+push this 2
+call Math.multiply 2
+push argument 1
+add
+pop local 0
+push local 0
+push this 0
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function GameField.setWithValue 1
+push argument 0
+pop pointer 0
+push argument 2
+push this 2
+call Math.multiply 2
+push argument 1
+add
+pop local 0
+push local 0
+push this 0
+add
+push argument 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function GameField.get 2
+push argument 0
+pop pointer 0
+push argument 2
+push this 2
+call Math.multiply 2
+push argument 1
+add
+pop local 1
+push local 1
+push this 0
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+return
+function GameField.printField 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE1
+push local 0
+push this 1
+push this 2
+call Math.multiply 2
+eq
+not
+not
+if-goto END_WHILE1
+push local 0
+push this 2
+call Math.divide 2
+pop local 1
+push local 0
+push local 1
+push this 2
+call Math.multiply 2
+sub
+pop local 2
+push local 0
+push this 0
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE1
+push argument 1
+call Screen.setColor 1
+pop temp 0
+push constant 272
+push constant 16
+push local 2
+call Math.multiply 2
+add
+push constant 10
+push constant 16
+push local 1
+call Math.multiply 2
+add
+push constant 286
+push constant 16
+push local 2
+call Math.multiply 2
+add
+push constant 24
+push constant 16
+push local 1
+call Math.multiply 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+goto END_IF1
+label ELSE1
+label END_IF1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE1
+label END_WHILE1
+push constant 0
+return
+function GameField.checkFilledLines 4
+push argument 0
+pop pointer 0
+push constant 0
+pop local 2
+push constant 1
+pop local 1
+label WHILE2
+push local 1
+push this 1
+eq
+not
+push local 2
+push constant 4
+eq
+not
+and
+not
+if-goto END_WHILE2
+push constant 0
+pop local 0
+push constant 0
+not
+pop local 3
+label WHILE3
+push local 0
+push this 2
+eq
+not
+push local 3
+push constant 0
+not
+eq
+and
+not
+if-goto END_WHILE3
+push pointer 0
+push local 0
+push local 1
+call GameField.get 3
+push constant 0
+eq
+not
+if-goto ELSE2
+push constant 0
+pop local 3
+goto END_IF2
+label ELSE2
+label END_IF2
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE3
+label END_WHILE3
+push local 3
+push constant 0
+not
+eq
+not
+if-goto ELSE3
+push pointer 0
+push local 1
+call GameField.moveLinesDown 2
+pop temp 0
+push local 2
+push constant 1
+add
+pop local 2
+goto END_IF3
+label ELSE3
+label END_IF3
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE2
+label END_WHILE2
+push local 2
+return
+function GameField.moveLinesDown 2
+push argument 0
+pop pointer 0
+push pointer 0
+push argument 1
+push constant 0
+push constant 15
+call GameField.flashingLine 4
+pop temp 0
+push pointer 0
+push constant 0
+call GameField.printField 2
+pop temp 0
+push argument 1
+pop local 1
+label WHILE4
+push local 1
+push constant 0
+eq
+not
+not
+if-goto END_WHILE4
+push constant 0
+pop local 0
+label WHILE5
+push local 0
+push this 2
+eq
+not
+not
+if-goto END_WHILE5
+push pointer 0
+push local 0
+push local 1
+push pointer 0
+push local 0
+push local 1
+push constant 1
+sub
+call GameField.get 3
+call GameField.setWithValue 4
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE5
+label END_WHILE5
+push local 1
+push constant 1
+sub
+pop local 1
+goto WHILE4
+label END_WHILE4
+push constant 0
+pop local 0
+label WHILE6
+push local 0
+push this 2
+eq
+not
+not
+if-goto END_WHILE6
+push pointer 0
+push local 0
+push constant 0
+push constant 0
+call GameField.setWithValue 4
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE6
+label END_WHILE6
+push pointer 0
+push constant 0
+not
+call GameField.printField 2
+pop temp 0
+push constant 0
+return
+function GameField.flashingLine 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push argument 2
+call Screen.setColor 1
+pop temp 0
+label WHILE7
+push local 0
+push this 2
+eq
+not
+not
+if-goto END_WHILE7
+push constant 272
+push constant 16
+push local 0
+call Math.multiply 2
+add
+push constant 10
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+push constant 286
+push constant 16
+push local 0
+call Math.multiply 2
+add
+push constant 24
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE7
+label END_WHILE7
+push constant 50
+call Sys.wait 1
+pop temp 0
+push argument 3
+push constant 1
+sub
+pop argument 3
+push argument 2
+push constant 0
+not
+eq
+not
+if-goto ELSE4
+push constant 0
+pop argument 2
+goto END_IF4
+label ELSE4
+push constant 0
+not
+pop argument 2
+label END_IF4
+push argument 3
+push constant 0
+eq
+not
+not
+if-goto ELSE5
+push pointer 0
+push argument 1
+push argument 2
+push argument 3
+call GameField.flashingLine 4
+pop temp 0
+goto END_IF5
+label ELSE5
+label END_IF5
+push constant 0
+return

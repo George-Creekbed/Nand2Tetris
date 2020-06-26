@@ -1,0 +1,793 @@
+<class>
+	<keyword> class </keyword>
+	<identifier> KIND: class_name **+ LFSR32Rand +** </identifier>
+	<symbol> { </symbol>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<subroutineDec>
+		<keyword> constructor </keyword>
+		<identifier> KIND: class_name **+ LFSR32Rand +** </identifier>
+		<identifier> KIND: subroutine_name **+ new +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: subroutine_name **+ seed +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<keyword> this </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ deAlloc +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> this </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ seed +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ seed1 +** defined </identifier>
+			<symbol> , </symbol>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ seed2 +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ seed1 +** used </identifier>
+								</term>
+								<symbol> | </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ seed2 +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> = </symbol>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<integerConstant> 23294 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<symbol> - </symbol>
+									<term>
+										<integerConstant> 4083 </integerConstant>
+									</term>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+					<keyword> else </keyword>
+					<symbol> { </symbol>
+					<statements>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ seed1 +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ seed2 +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> int </keyword>
+		<identifier> KIND: subroutine_name **+ randBit +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ bit +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+								</term>
+								<symbol> | </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> = </symbol>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: subroutine_name **+ seed +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ bit +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+										</term>
+										<symbol> &lt; </symbol>
+										<term>
+											<integerConstant> 0 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+												</term>
+												<symbol> &amp; </symbol>
+												<term>
+													<integerConstant> 64 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 64 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+												</term>
+												<symbol> &amp; </symbol>
+												<term>
+													<integerConstant> 4096 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 4096 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+												</term>
+												<symbol> &amp; </symbol>
+												<term>
+													<integerConstant> 32 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 32 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> &amp; </symbol>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 1 **+ msw +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> - </symbol>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+								</term>
+								<symbol> &lt; </symbol>
+								<term>
+									<integerConstant> 0 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ bit +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ bit +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> int </keyword>
+		<identifier> KIND: subroutine_name **+ randInt +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+						</term>
+						<symbol> &lt; </symbol>
+						<term>
+							<integerConstant> 16 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: subroutine_name **+ randBit +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ lsw +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> int </keyword>
+		<identifier> KIND: subroutine_name **+ rand +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ randInt +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> &amp; </symbol>
+						<term>
+							<integerConstant> 32767 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> int </keyword>
+		<identifier> KIND: subroutine_name **+ randRange +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** defined </identifier>
+			<symbol> , </symbol>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ max +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** defined </identifier>
+				<symbol> , </symbol>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** defined </identifier>
+				<symbol> , </symbol>
+				<identifier> TYPE: int - KIND: var - INDEX: 2 **+ ret +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ rand +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ max +** used </identifier>
+						</term>
+						<symbol> - </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+						</term>
+						<symbol> = </symbol>
+						<term>
+							<integerConstant> 32767 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<returnStatement>
+							<keyword> return </keyword>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</returnStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+						</term>
+						<symbol> &lt; </symbol>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<returnStatement>
+							<keyword> return </keyword>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</returnStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 32767 </integerConstant>
+						</term>
+						<symbol> / </symbol>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 2 **+ ret +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** used </identifier>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+								</term>
+								<symbol> / </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 32767 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> | </symbol>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 2 **+ ret +** used </identifier>
+								</term>
+								<symbol> &gt; </symbol>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 2 **+ max +** used </identifier>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> KIND: subroutine_name **+ rand +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 2 **+ ret +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ min +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: var - INDEX: 0 **+ r +** used </identifier>
+										</term>
+										<symbol> / </symbol>
+										<term>
+											<identifier> TYPE: int - KIND: var - INDEX: 1 **+ s +** used </identifier>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 2 **+ ret +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<symbol> } </symbol>
+</class>

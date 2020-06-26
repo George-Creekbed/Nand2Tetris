@@ -1,0 +1,236 @@
+/*
+*
+*/
+
+class Background {	
+	function void createWalls() {
+		var int i;
+		var int three_two_seven_six_seven;
+		let three_two_seven_six_seven = 32767;
+		
+		let i = 0;
+		while (~(i = 14))
+		{
+			do Background.wallWest(336 + (16 * (32 * i)));
+			let i = i + 1;
+		}
+		
+		// lone pixel
+		do Memory.poke(16384 + 7505 - 1, -(three_two_seven_six_seven + 1));
+		
+		let i = 0;
+		while (~(i = 3))
+		{
+			do Background.wallSouthWest(7505 +  i);
+			let i = i + 1;
+		}
+		
+		let i = 0;
+		while (~(i = 4))
+		{
+			do Background.wallSouthCentre(7508 + i);
+			let i = i + 1;
+		}
+		
+		let i = 0;
+		while (~(i = 3))
+		{
+			do Background.wallSouthEast(7512 +  i);
+			let i = i + 1;
+		}
+		
+		let i = 0;
+		while (~(i = 14))
+		{
+			do Background.wallEast(347 + (16 * (32 * i)));
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	function void createLeftPanel(String player) {
+		var String output1;
+		var String output2;
+		var String output3;
+		var String output4;
+		
+		let output1 = "Player's name: ";
+		let output2 = "Next piece:";
+		let output3 = "Score: ";
+		let output4 = "Lines: ";
+		
+		do Output.moveCursor(2, 11);
+		do Output.printString(output1);
+		do Output.moveCursor(4, 13);
+		do Output.printString(player);
+		do Output.moveCursor(6, 7);
+		do Output.printString(output3);
+		do Output.moveCursor(6, 20);
+		do Output.printString(output4);
+		
+		do Output.moveCursor(10, 11);
+		do Output.printString(output2);
+		do Screen.drawRectangle(80, 130, 200, 210);
+		do Screen.setColor(false);
+		do Screen.drawRectangle(81, 131, 199, 209); 
+		
+	return;
+	}
+	
+	function void printScore(int score, int lines_scored)
+	{
+		do Output.moveCursor(8, 9);
+		do Output.printInt(score);
+	    do Output.moveCursor(8, 22);
+		do Output.printInt(lines_scored);
+		
+	return;
+	}
+	
+	function void gameOver()
+	{
+		var String output1;
+		let output1 = "GAME OVER!";
+		
+		do Screen.setColor(true);
+		do Screen.drawRectangle(300, 70, 420, 160);
+		do Screen.setColor(false);
+		do Screen.drawRectangle(302, 72, 418, 158); 
+		do Screen.setColor(true);
+		do Output.moveCursor(10, 40);
+		do Output.printString(output1);
+	
+		do output1.dispose();
+		
+	return;
+	}
+	
+	function void wallWest(int location) {
+		var int memAddress;
+		//var int three_two_seven_six_seven;	// workaround as 'poke' won't accept -32768 as parameter directly, too big
+		let memAddress = 16384 + location;
+		do Memory.poke(memAddress+0, 16384);
+		do Memory.poke(memAddress+32, 16864);
+		do Memory.poke(memAddress+64, 20224);
+		do Memory.poke(memAddress+96, 30720);
+		do Memory.poke(memAddress+128, 16384);
+		do Memory.poke(memAddress+160, 16384);
+		do Memory.poke(memAddress+192, 16864);
+		do Memory.poke(memAddress+224, 20224);
+		do Memory.poke(memAddress+256, 30720);
+		do Memory.poke(memAddress+288, 16384);
+		do Memory.poke(memAddress+320, 16384);
+		do Memory.poke(memAddress+352, 16864);
+		do Memory.poke(memAddress+384, 20224);
+		do Memory.poke(memAddress+416, 30720);
+		do Memory.poke(memAddress+448, 16384);
+		do Memory.poke(memAddress+480, 16384);
+		//let three_two_seven_six_seven = -16385;//32767;
+		//do Memory.poke(memAddress+0, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+32, -31808);
+		//do Memory.poke(memAddress+64, -25088);
+		//do Memory.poke(memAddress+96, -4096);
+		//do Memory.poke(memAddress+128, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+160, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+192, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+224, -31808);
+		//do Memory.poke(memAddress+256, -25088);
+		//do Memory.poke(memAddress+288, -4096);
+		//do Memory.poke(memAddress+320, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+352, -(three_two_seven_six_seven + 1));
+		//do Memory.poke(memAddress+384, -31808);
+		//do Memory.poke(memAddress+416, -25088);
+		//do Memory.poke(memAddress+448, -4096);
+		//do Memory.poke(memAddress+480, -(three_two_seven_six_seven + 1));
+	return;
+	}
+	
+	function void wallEast(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, 1);
+		do Memory.poke(memAddress+32, 961);
+		do Memory.poke(memAddress+64, 121);
+		do Memory.poke(memAddress+96, 15);
+		do Memory.poke(memAddress+128, 1);
+		do Memory.poke(memAddress+160, 1);
+		do Memory.poke(memAddress+192, 1);
+		do Memory.poke(memAddress+224, 961);
+		do Memory.poke(memAddress+256, 121);
+		do Memory.poke(memAddress+288, 15);
+		do Memory.poke(memAddress+320, 1);
+		do Memory.poke(memAddress+352, 1);
+		do Memory.poke(memAddress+384, 961);
+		do Memory.poke(memAddress+416, 121);
+		do Memory.poke(memAddress+448, 15);
+		do Memory.poke(memAddress+480, 1);
+	return;
+	}
+	
+	function void wallSouthEast(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, -1);
+		do Memory.poke(memAddress+32, 2114);
+		do Memory.poke(memAddress+64, 6342);
+		do Memory.poke(memAddress+96, 4228);
+		do Memory.poke(memAddress+128, 12684);
+		do Memory.poke(memAddress+160, 8456);
+		do Memory.poke(memAddress+192, 25368);
+		do Memory.poke(memAddress+224, 16912);
+		do Memory.poke(memAddress+256, -14800);
+		do Memory.poke(memAddress+288, -31712);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+	return;
+	}
+	
+	function void wallSouthWest(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, -1);
+		do Memory.poke(memAddress+32, 16912);
+		do Memory.poke(memAddress+64, 25368);
+		do Memory.poke(memAddress+96, 8456);
+		do Memory.poke(memAddress+128, 12684);
+		do Memory.poke(memAddress+160, 4228);
+		do Memory.poke(memAddress+192, 6342);
+		do Memory.poke(memAddress+224, 2114);
+		do Memory.poke(memAddress+256, 3171);
+		do Memory.poke(memAddress+288, 1057);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+	return;
+	}
+	
+	function void wallSouthCentre(int location) {
+		var int memAddress;
+		let memAddress = 16384+location;
+		do Memory.poke(memAddress+0, -1);
+		do Memory.poke(memAddress+32, 8456);
+		do Memory.poke(memAddress+64, 8456);
+		do Memory.poke(memAddress+96, 8456);
+		do Memory.poke(memAddress+128, 8456);
+		do Memory.poke(memAddress+160, 8456);
+		do Memory.poke(memAddress+192, 8456);
+		do Memory.poke(memAddress+224, 8456);
+		do Memory.poke(memAddress+256, 8456);
+		do Memory.poke(memAddress+288, 8456);
+		do Memory.poke(memAddress+320, 0);
+		do Memory.poke(memAddress+352, 0);
+		do Memory.poke(memAddress+384, 0);
+		do Memory.poke(memAddress+416, 0);
+		do Memory.poke(memAddress+448, 0);
+		do Memory.poke(memAddress+480, 0);
+	return;
+	}
+}

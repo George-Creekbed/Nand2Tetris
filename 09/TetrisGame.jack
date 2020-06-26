@@ -1,0 +1,305 @@
+/**
+ * Implements the Tetris game.
+ * This simple game allows the user to move a black square around
+ * the screen, and change the square's size during the movement.
+ * When the game starts, a square of 30 by 30 pixels is shown at the
+ * top-left corner of the screen. The user controls the square as follows.
+ * The 4 arrow keys are used to move the square up, down, left, and right.
+ * The 'z' and 'x' keys are used, respectively, to decrement and increment
+ * the square's size. The 'q' key is used to quit the game.
+ */
+
+class TetrisGame {
+    field int direction; // the current direction of tetris piece: 
+                         
+    
+    field GameField board;
+    field Piece piece;
+    field Piece next_piece;
+    field LFSR32Rand random_gen;
+    field int piece_type;	// by random generator
+    field int next_piece_type;	// by random generator
+    
+    field int lines_scored;
+    field int score;
+    
+    static char shape;
+    static char next_shape;
+
+    /** Constructs a new Tetris Game. */
+    constructor TetrisGame new(String player, int random_seed)
+    {
+		let lines_scored = 0;
+		let score = 0;	
+		
+		do Background.createWalls();
+		do Background.createLeftPanel(player);
+		do Background.printScore(score, lines_scored);
+		let direction = 0;
+		
+		let board = GameField.new(10, 14);	// width = 10; height = 14
+		/////////////////////////////////
+		// PIECES:
+		// i = 105		piece_type = 0
+		// z = 122		piece_type = 1
+		// s = 115		piece_type = 2
+		// t = 116		piece_type = 3
+		// l = 108		piece_type = 4
+		// j = 106		piece_type = 5
+		// o = 111		piece_type = 6
+		/////////////////////////////////
+		let random_gen = LFSR32Rand.new();
+		do random_gen.seed(random_seed, 675);
+		let next_piece_type = random_gen.randRange(0, 6);
+		let piece_type = random_gen.randRange(0, 6);
+				
+	return this;
+    }
+    
+    /** Disposes this game. */
+   method void dispose() 
+   {
+      do piece.dispose();
+      do next_piece.dispose();
+      do board.dispose();
+      do random_gen.dispose();
+      do Memory.deAlloc(this);
+      
+   return;
+   }
+   
+   /** Moves the piece in the current direction. */
+   method void movePiece() 
+   {
+	   var bool wall_crossed;
+	   var bool blocks_left;
+	   var bool blocks_right;
+	   var bool blocks_down;
+	   
+	   let blocks_left = leftCollision();
+	   let blocks_right = rightCollision();
+	   let blocks_down = downCollision();
+	   
+	   if (direction = 1) // rotate
+	   { 
+		   if ((blocks_left = false) & (blocks_right = false) & (blocks_down = false))
+		   {
+		       do piece.rotateAndCheck(); 
+		   } 
+	   }
+	   else 
+	   {
+		   let wall_crossed = false;			
+		   if (direction = 2) 
+		   { 
+				let wall_crossed = piece.checkBottomWall();
+				if ((wall_crossed = false) & (blocks_down = false)) 
+				{ 
+				    do piece.moveDown();
+				}
+				else { 
+					do pieceToBoard();
+					do Background.printScore(score, lines_scored); 
+				}
+		   } else {
+		   if (direction = 3) 
+		   { 
+				let wall_crossed = piece.checkLeftWall();
+				if ((wall_crossed = false) & (blocks_left = false)) { do piece.moveLeft(); }
+		   } else {
+		   if (direction = 4) 
+		   { 
+				let wall_crossed = piece.checkRightWall();
+				if ((wall_crossed = false) & (blocks_right = false)) { do piece.moveRight(); }
+		   }}}
+	   
+		   let wall_crossed = false;
+       }
+       	   
+	   let direction = 0;
+       
+   return;
+   }
+
+   method void pieceToBoard()
+   {
+		var int i;
+		var int lines_filled_this_time;
+		
+	    let i = 0;
+		while((i < 5))
+		{
+			do board.set(piece.getXPos(i), piece.getYPos(i));
+			let i = i + 1;
+		}
+		
+		do board.printField(true);
+		let lines_filled_this_time = board.checkFilledLines();
+		
+		let score = score + 1;	// 1 point for each landed piece
+		do addLinesToScore(lines_filled_this_time);
+		
+		let piece_type = next_piece_type;
+		let next_piece_type = random_gen.randRange(0, 6);
+		let shape = Piece.pickType(piece_type);
+		let next_shape = Piece.pickType(next_piece_type);
+		
+		do next_piece.eraseNextPiece();
+		do piece.dispose();
+		let piece = Piece.new(shape);
+		do next_piece.dispose();
+		let next_piece = Piece.new(next_shape);	
+		
+		do piece.printPiece();
+		do next_piece.printNextPiece();
+		
+   return;
+   }
+   
+   method void addLinesToScore(int lines_filled_this_time)
+   {
+	   let lines_scored = lines_scored + lines_filled_this_time;
+	   
+	   if (lines_filled_this_time = 1) {let score = score + 30;}
+	   else { if (lines_filled_this_time = 2) {let score = score + 100;}
+	   else { if (lines_filled_this_time = 3) {let score = score + 200;}
+	   else { if (lines_filled_this_time = 4) {let score = score + 500;}}}}
+	   
+   return;
+   }
+   
+   method bool leftCollision()
+   {
+		var bool return_value;
+		var int i;
+		
+		let return_value = false;
+		let i = 0;
+		while (~(i = 5))
+		{
+			if (board.get(piece.getXPos(i) - 1, piece.getYPos(i)) = 1) 
+				{let return_value = true;}
+			let i = i + 1;
+		}
+		
+   return return_value;
+   }
+
+   method bool rightCollision()
+   {
+		var bool return_value;
+		var int i;
+		
+		let return_value = false;
+		let i = 0;
+		while (~(i = 5))
+		{
+			if (board.get(piece.getXPos(i) + 1, piece.getYPos(i)) = 1) 
+				{let return_value = true;}
+			let i = i + 1;
+		}
+		
+   return return_value;
+   }
+
+   method bool downCollision()
+   {
+		var bool return_value;
+		var int i;
+		
+		let return_value = false;
+		let i = 0;
+		while (~(i = 5))
+		{
+			if (board.get(piece.getXPos(i), piece.getYPos(i) + 1) = 1) 
+				{let return_value = true;}
+			let i = i + 1;
+		}
+		
+   return return_value;
+   }
+   
+   method void advance()
+   {
+	   var bool wall_crossed, blocks_down;
+	   
+	   let wall_crossed = piece.checkBottomWall();
+	   let blocks_down = downCollision();
+	   if ((wall_crossed = false) & (blocks_down = false)) {do piece.moveDown();}
+	   do piece.printPiece();
+	   
+   return;
+   }
+     
+   /** Runs the game: handles the user's inputs and moves the everything accordingly */
+   method void run() 
+   {
+       var char key;  // the key currently pressed by the user
+       var boolean exit;
+       var int i;
+       
+       let exit = false;
+    	
+       do board.printField(true);
+       
+       let next_piece_type = random_gen.randRange(0, 6);
+	   let shape = Piece.pickType(piece_type);
+	   let next_shape = Piece.pickType(next_piece_type);
+	   
+	   let piece = Piece.new(shape);	
+       do piece.printPiece();
+	   let next_piece = Piece.new(next_shape);
+       do next_piece.printNextPiece();
+       
+       while (~exit)
+       {
+          // waits for a key to be pressed
+         while (key = 0) 
+         {
+             let key = Keyboard.keyPressed();	  	  
+			 //do advance();
+			 //do Sys.wait(600);
+			 
+			 if (downCollision() | piece.checkBottomWall())
+			 {
+				 do Sys.wait(20); 
+				 do pieceToBoard();
+				 do Background.printScore(score, lines_scored);
+			 }
+			  if (board.get(7, 0) = 1) 
+			  {   
+			      do Background.gameOver();
+				  let exit = true;
+			  }
+         }
+		  
+		 let key = Keyboard.keyPressed();
+         if (key = 81)   // q key
+         { 
+			 do Background.gameOver();
+			 let exit = true;
+		 }    
+         else {if (key = 131) { let direction = 1; }   // up arrow (rotate)
+         else {if (key = 133) { let direction = 2; }   // down arrow
+         else {if (key = 130) { let direction = 3; }   // left arrow
+         else {if (key = 132) { let direction = 4; }}}}}   // right arrow
+
+          // waits for the key to be released
+         while (~(key = 0)) 
+         {
+             let key = Keyboard.keyPressed();
+		     do movePiece();
+			 do piece.printPiece();
+			 do Sys.wait(20);
+	   	     if (board.get(7, 0) = 1) 
+	   	     {
+				do Background.gameOver();
+				let exit = true;
+			 }
+         }
+      } // while
+
+  return;
+  }
+}
+

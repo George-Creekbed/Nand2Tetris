@@ -1,0 +1,3456 @@
+<class>
+	<keyword> class </keyword>
+	<identifier> KIND: class_name **+ Background +** </identifier>
+	<symbol> { </symbol>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ createWalls +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ three_two_seven_six_seven +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ three_two_seven_six_seven +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 32767 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 14 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: class_name **+ Background +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ wallWest +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 336 </integerConstant>
+									</term>
+									<symbol> + </symbol>
+									<term>
+										<symbol> ( </symbol>
+										<expression>
+											<term>
+												<integerConstant> 16 </integerConstant>
+											</term>
+											<symbol> * </symbol>
+											<term>
+												<symbol> ( </symbol>
+												<expression>
+													<term>
+														<integerConstant> 32 </integerConstant>
+													</term>
+													<symbol> * </symbol>
+													<term>
+														<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+													</term>
+												</expression>
+												<symbol> ) </symbol>
+											</term>
+										</expression>
+										<symbol> ) </symbol>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 7505 </integerConstant>
+							</term>
+							<symbol> - </symbol>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: var - INDEX: 1 **+ three_two_seven_six_seven +** used </identifier>
+										</term>
+										<symbol> + </symbol>
+										<term>
+											<integerConstant> 1 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 3 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: class_name **+ Background +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ wallSouthWest +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 7505 </integerConstant>
+									</term>
+									<symbol> + </symbol>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 4 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: class_name **+ Background +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ wallSouthCentre +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 7508 </integerConstant>
+									</term>
+									<symbol> + </symbol>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 3 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: class_name **+ Background +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ wallSouthEast +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 7512 </integerConstant>
+									</term>
+									<symbol> + </symbol>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 14 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> KIND: class_name **+ Background +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ wallEast +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 347 </integerConstant>
+									</term>
+									<symbol> + </symbol>
+									<term>
+										<symbol> ( </symbol>
+										<expression>
+											<term>
+												<integerConstant> 16 </integerConstant>
+											</term>
+											<symbol> * </symbol>
+											<term>
+												<symbol> ( </symbol>
+												<expression>
+													<term>
+														<integerConstant> 32 </integerConstant>
+													</term>
+													<symbol> * </symbol>
+													<term>
+														<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+													</term>
+												</expression>
+												<symbol> ) </symbol>
+											</term>
+										</expression>
+										<symbol> ) </symbol>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ createLeftPanel +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<identifier> KIND: class_name **+ String +** </identifier>
+			<identifier> TYPE: String - KIND: arg - INDEX: 0 **+ player +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 1 **+ output2 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 2 **+ output3 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output4 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Player's name:  </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 1 **+ output2 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Next piece: </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 2 **+ output3 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Score:  </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output4 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Lines:  </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 2 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 11 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 4 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 13 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: arg - INDEX: 0 **+ player +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 6 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 7 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 2 **+ output3 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 6 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 20 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output4 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 10 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 11 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 1 **+ output2 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ drawRectangle +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 80 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 130 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 200 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 210 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ setColor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> false </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ drawRectangle +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 81 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 131 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 199 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 209 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ printScore +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ score +** defined </identifier>
+			<symbol> , </symbol>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_scored +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 8 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 9 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printInt +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ score +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 8 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 22 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printInt +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_scored +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ gameOver +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> GAME OVER! </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ setColor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> true </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ drawRectangle +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 300 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 70 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 420 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ setColor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> false </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ drawRectangle +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 302 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 72 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 418 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 158 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ setColor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> true </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 10 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 40 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 0 **+ output1 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ wallWest +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 16384 </integerConstant>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 32 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16864 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 64 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 20224 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 96 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 30720 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 128 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 192 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16864 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 224 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 20224 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 256 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 30720 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 288 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 320 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 352 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16864 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 384 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 20224 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 416 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 30720 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 448 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 480 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16384 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ wallEast +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 16384 </integerConstant>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 32 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 961 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 64 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 121 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 96 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 15 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 128 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 192 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 224 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 961 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 256 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 121 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 288 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 15 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 320 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 352 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 384 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 961 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 416 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 121 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 448 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 15 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 480 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ wallSouthEast +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 16384 </integerConstant>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 32 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 2114 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 64 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 6342 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 96 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 4228 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 128 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 12684 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 192 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 25368 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 224 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16912 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 256 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<integerConstant> 14800 </integerConstant>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 288 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<integerConstant> 31712 </integerConstant>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 320 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 352 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 384 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 416 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 448 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 480 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ wallSouthWest +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 16384 </integerConstant>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 32 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 16912 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 64 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 25368 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 96 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 128 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 12684 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 4228 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 192 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 6342 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 224 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 2114 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 256 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 3171 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 288 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 1057 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 320 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 352 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 384 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 416 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 448 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 480 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ wallSouthCentre +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 16384 </integerConstant>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 0 **+ location +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<symbol> - </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 32 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 64 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 96 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 128 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 160 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 192 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 224 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 256 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 288 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8456 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 320 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 352 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 384 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 416 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 448 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ poke +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 0 **+ memAddress +** used </identifier>
+							</term>
+							<symbol> + </symbol>
+							<term>
+								<integerConstant> 480 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 0 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<symbol> } </symbol>
+</class>

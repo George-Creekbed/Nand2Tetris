@@ -1,0 +1,2787 @@
+<class>
+	<keyword> class </keyword>
+	<identifier> KIND: class_name **+ TetrisGame +** </identifier>
+	<symbol> { </symbol>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<identifier> KIND: class_name **+ GameField +** </identifier>
+		<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<identifier> KIND: class_name **+ Piece +** </identifier>
+		<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<identifier> KIND: class_name **+ Piece +** </identifier>
+		<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<identifier> KIND: class_name **+ LFSR32Rand +** </identifier>
+		<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 5 **+ piece_type +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> field </keyword>
+		<keyword> int </keyword>
+		<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> static </keyword>
+		<keyword> char </keyword>
+		<identifier> TYPE: char - KIND: static - INDEX: 0 **+ shape +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<classVarDec>
+		<keyword> static </keyword>
+		<keyword> char </keyword>
+		<identifier> TYPE: char - KIND: static - INDEX: 1 **+ next_shape +** defined </identifier>
+		<symbol> ; </symbol>
+	</classVarDec>
+	<subroutineDec>
+		<keyword> constructor </keyword>
+		<identifier> KIND: class_name **+ TetrisGame +** </identifier>
+		<identifier> KIND: subroutine_name **+ new +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<identifier> KIND: class_name **+ String +** </identifier>
+			<identifier> TYPE: String - KIND: arg - INDEX: 0 **+ player +** defined </identifier>
+			<symbol> , </symbol>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ random_seed +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Background +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ createWalls +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Background +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ createLeftPanel +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: arg - INDEX: 0 **+ player +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Background +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printScore +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ GameField +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 10 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 14 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ LFSR32Rand +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ seed +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ random_seed +** used </identifier>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 675 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ randRange +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 6 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 5 **+ piece_type +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ randRange +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 6 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<keyword> this </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Memory +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ deAlloc +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> this </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ movePiece +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_left +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 2 **+ blocks_right +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 3 **+ blocks_down +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_left +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ leftCollision +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 2 **+ blocks_right +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ rightCollision +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 3 **+ blocks_down +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ downCollision +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+						</term>
+						<symbol> = </symbol>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_left +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<keyword> false </keyword>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> &amp; </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: bool - KIND: var - INDEX: 2 **+ blocks_right +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<keyword> false </keyword>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> &amp; </symbol>
+								<term>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: bool - KIND: var - INDEX: 3 **+ blocks_down +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<keyword> false </keyword>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<doStatement>
+									<keyword> do </keyword>
+									<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ rotateAndCheck +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+									<symbol> ; </symbol>
+								</doStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+					</statements>
+					<symbol> } </symbol>
+					<keyword> else </keyword>
+					<symbol> { </symbol>
+					<statements>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<keyword> false </keyword>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 2 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ checkBottomWall +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+												</term>
+												<symbol> = </symbol>
+												<term>
+													<keyword> false </keyword>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> &amp; </symbol>
+										<term>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: bool - KIND: var - INDEX: 3 **+ blocks_down +** used </identifier>
+												</term>
+												<symbol> = </symbol>
+												<term>
+													<keyword> false </keyword>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ moveDown +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+									</statements>
+									<symbol> } </symbol>
+									<keyword> else </keyword>
+									<symbol> { </symbol>
+									<statements>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: subroutine_name **+ pieceToBoard +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: class_name **+ Background +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ printScore +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+												<expression>
+													<term>
+														<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+													</term>
+												</expression>
+													<symbol> , </symbol>
+												<expression>
+													<term>
+														<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+													</term>
+												</expression>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+							<keyword> else </keyword>
+							<symbol> { </symbol>
+							<statements>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 3 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<letStatement>
+											<keyword> let </keyword>
+											<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+											<symbol> = </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+													<symbol> . </symbol>
+													<identifier> KIND: subroutine_name **+ checkLeftWall +** </identifier>
+													<symbol> ( </symbol>
+													<expressionList>
+													</expressionList>
+													<symbol> ) </symbol>
+												</term>
+											</expression>
+											<symbol> ; </symbol>
+										</letStatement>
+										<ifStatement>
+											<keyword> if </keyword>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<symbol> ( </symbol>
+													<expression>
+														<term>
+															<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+														</term>
+														<symbol> = </symbol>
+														<term>
+															<keyword> false </keyword>
+														</term>
+													</expression>
+													<symbol> ) </symbol>
+												</term>
+												<symbol> &amp; </symbol>
+												<term>
+													<symbol> ( </symbol>
+													<expression>
+														<term>
+															<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_left +** used </identifier>
+														</term>
+														<symbol> = </symbol>
+														<term>
+															<keyword> false </keyword>
+														</term>
+													</expression>
+													<symbol> ) </symbol>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+											<symbol> { </symbol>
+											<statements>
+												<doStatement>
+													<keyword> do </keyword>
+													<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+													<symbol> . </symbol>
+													<identifier> KIND: subroutine_name **+ moveLeft +** </identifier>
+													<symbol> ( </symbol>
+													<expressionList>
+													</expressionList>
+													<symbol> ) </symbol>
+													<symbol> ; </symbol>
+												</doStatement>
+											</statements>
+											<symbol> } </symbol>
+										</ifStatement>
+									</statements>
+									<symbol> } </symbol>
+									<keyword> else </keyword>
+									<symbol> { </symbol>
+									<statements>
+										<ifStatement>
+											<keyword> if </keyword>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+												</term>
+												<symbol> = </symbol>
+												<term>
+													<integerConstant> 4 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+											<symbol> { </symbol>
+											<statements>
+												<letStatement>
+													<keyword> let </keyword>
+													<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+													<symbol> = </symbol>
+													<expression>
+														<term>
+															<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+															<symbol> . </symbol>
+															<identifier> KIND: subroutine_name **+ checkRightWall +** </identifier>
+															<symbol> ( </symbol>
+															<expressionList>
+															</expressionList>
+															<symbol> ) </symbol>
+														</term>
+													</expression>
+													<symbol> ; </symbol>
+												</letStatement>
+												<ifStatement>
+													<keyword> if </keyword>
+													<symbol> ( </symbol>
+													<expression>
+														<term>
+															<symbol> ( </symbol>
+															<expression>
+																<term>
+																	<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+																</term>
+																<symbol> = </symbol>
+																<term>
+																	<keyword> false </keyword>
+																</term>
+															</expression>
+															<symbol> ) </symbol>
+														</term>
+														<symbol> &amp; </symbol>
+														<term>
+															<symbol> ( </symbol>
+															<expression>
+																<term>
+																	<identifier> TYPE: bool - KIND: var - INDEX: 2 **+ blocks_right +** used </identifier>
+																</term>
+																<symbol> = </symbol>
+																<term>
+																	<keyword> false </keyword>
+																</term>
+															</expression>
+															<symbol> ) </symbol>
+														</term>
+													</expression>
+													<symbol> ) </symbol>
+													<symbol> { </symbol>
+													<statements>
+														<doStatement>
+															<keyword> do </keyword>
+															<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+															<symbol> . </symbol>
+															<identifier> KIND: subroutine_name **+ moveRight +** </identifier>
+															<symbol> ( </symbol>
+															<expressionList>
+															</expressionList>
+															<symbol> ) </symbol>
+															<symbol> ; </symbol>
+														</doStatement>
+													</statements>
+													<symbol> } </symbol>
+												</ifStatement>
+											</statements>
+											<symbol> } </symbol>
+										</ifStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<keyword> false </keyword>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ pieceToBoard +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ lines_filled_this_time +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> &lt; </symbol>
+								<term>
+									<integerConstant> 5 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ set +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+										<symbol> . </symbol>
+										<identifier> KIND: subroutine_name **+ getXPos +** </identifier>
+										<symbol> ( </symbol>
+										<expressionList>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+												</term>
+											</expression>
+										</expressionList>
+										<symbol> ) </symbol>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+										<symbol> . </symbol>
+										<identifier> KIND: subroutine_name **+ getYPos +** </identifier>
+										<symbol> ( </symbol>
+										<expressionList>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+												</term>
+											</expression>
+										</expressionList>
+										<symbol> ) </symbol>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 0 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printField +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> true </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ checkFilledLines +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: subroutine_name **+ addLinesToScore +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: int - KIND: var - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 5 **+ piece_type +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ randRange +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 6 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: char - KIND: static - INDEX: 0 **+ shape +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ pickType +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: field - INDEX: 5 **+ piece_type +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: char - KIND: static - INDEX: 1 **+ next_shape +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ pickType +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ eraseNextPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: char - KIND: static - INDEX: 0 **+ shape +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: char - KIND: static - INDEX: 1 **+ next_shape +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printNextPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ addLinesToScore +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+			<keyword> int </keyword>
+			<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** defined </identifier>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+						</term>
+						<symbol> + </symbol>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+						</term>
+						<symbol> = </symbol>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 30 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+					<keyword> else </keyword>
+					<symbol> { </symbol>
+					<statements>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 2 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+										</term>
+										<symbol> + </symbol>
+										<term>
+											<integerConstant> 100 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+							</statements>
+							<symbol> } </symbol>
+							<keyword> else </keyword>
+							<symbol> { </symbol>
+							<statements>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 3 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<letStatement>
+											<keyword> let </keyword>
+											<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+											<symbol> = </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+												</term>
+												<symbol> + </symbol>
+												<term>
+													<integerConstant> 200 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ; </symbol>
+										</letStatement>
+									</statements>
+									<symbol> } </symbol>
+									<keyword> else </keyword>
+									<symbol> { </symbol>
+									<statements>
+										<ifStatement>
+											<keyword> if </keyword>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: int - KIND: arg - INDEX: 1 **+ lines_filled_this_time +** used </identifier>
+												</term>
+												<symbol> = </symbol>
+												<term>
+													<integerConstant> 4 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+											<symbol> { </symbol>
+											<statements>
+												<letStatement>
+													<keyword> let </keyword>
+													<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+													<symbol> = </symbol>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+														</term>
+														<symbol> + </symbol>
+														<term>
+															<integerConstant> 500 </integerConstant>
+														</term>
+													</expression>
+													<symbol> ; </symbol>
+												</letStatement>
+											</statements>
+											<symbol> } </symbol>
+										</ifStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> bool </keyword>
+		<identifier> KIND: subroutine_name **+ leftCollision +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<keyword> false </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 5 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ get +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getXPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+											<symbol> - </symbol>
+											<term>
+												<integerConstant> 1 </integerConstant>
+											</term>
+										</expression>
+											<symbol> , </symbol>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getYPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+										</expression>
+									</expressionList>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<keyword> true </keyword>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> bool </keyword>
+		<identifier> KIND: subroutine_name **+ rightCollision +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<keyword> false </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 5 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ get +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getXPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+											<symbol> + </symbol>
+											<term>
+												<integerConstant> 1 </integerConstant>
+											</term>
+										</expression>
+											<symbol> , </symbol>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getYPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+										</expression>
+									</expressionList>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<keyword> true </keyword>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> bool </keyword>
+		<identifier> KIND: subroutine_name **+ downCollision +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<keyword> false </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<symbol> ( </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+									</term>
+									<symbol> = </symbol>
+									<term>
+										<integerConstant> 5 </integerConstant>
+									</term>
+								</expression>
+								<symbol> ) </symbol>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ get +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getXPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+										</expression>
+											<symbol> , </symbol>
+										<expression>
+											<term>
+												<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+												<symbol> . </symbol>
+												<identifier> KIND: subroutine_name **+ getYPos +** </identifier>
+												<symbol> ( </symbol>
+												<expressionList>
+													<expression>
+														<term>
+															<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+														</term>
+													</expression>
+												</expressionList>
+												<symbol> ) </symbol>
+											</term>
+											<symbol> + </symbol>
+											<term>
+												<integerConstant> 1 </integerConstant>
+											</term>
+										</expression>
+									</expressionList>
+									<symbol> ) </symbol>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<keyword> true </keyword>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: int - KIND: var - INDEX: 1 **+ i +** used </identifier>
+								</term>
+								<symbol> + </symbol>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ return_value +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ advance +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> bool </keyword>
+				<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** defined </identifier>
+				<symbol> , </symbol>
+				<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_down +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ checkBottomWall +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_down +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: subroutine_name **+ downCollision +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<ifStatement>
+					<keyword> if </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: bool - KIND: var - INDEX: 0 **+ wall_crossed +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<keyword> false </keyword>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+						<symbol> &amp; </symbol>
+						<term>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: bool - KIND: var - INDEX: 1 **+ blocks_down +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<keyword> false </keyword>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<doStatement>
+							<keyword> do </keyword>
+							<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ moveDown +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+							<symbol> ; </symbol>
+						</doStatement>
+					</statements>
+					<symbol> } </symbol>
+				</ifStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> method </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ run +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> char </keyword>
+				<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> boolean </keyword>
+				<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 2 **+ i +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<keyword> false </keyword>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printField +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<keyword> true </keyword>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: LFSR32Rand - KIND: field - INDEX: 4 **+ random_gen +** used </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ randRange +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 0 </integerConstant>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<integerConstant> 6 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: char - KIND: static - INDEX: 0 **+ shape +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ pickType +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: field - INDEX: 5 **+ piece_type +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: char - KIND: static - INDEX: 1 **+ next_shape +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ pickType +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: field - INDEX: 6 **+ next_piece_type +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: char - KIND: static - INDEX: 0 **+ shape +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Piece +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: char - KIND: static - INDEX: 1 **+ next_shape +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Piece - KIND: field - INDEX: 3 **+ next_piece +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printNextPiece +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<whileStatement>
+					<keyword> while </keyword>
+					<symbol> ( </symbol>
+					<expression>
+						<term>
+							<symbol> ~ </symbol>
+							<term>
+								<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** used </identifier>
+							</term>
+						</term>
+					</expression>
+					<symbol> ) </symbol>
+					<symbol> { </symbol>
+					<statements>
+						<whileStatement>
+							<keyword> while </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 0 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<identifier> KIND: class_name **+ Keyboard +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ keyPressed +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> KIND: subroutine_name **+ downCollision +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> | </symbol>
+										<term>
+											<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ checkBottomWall +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: class_name **+ Sys +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ wait +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+												<expression>
+													<term>
+														<integerConstant> 20 </integerConstant>
+													</term>
+												</expression>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: subroutine_name **+ pieceToBoard +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: class_name **+ Background +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ printScore +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+												<expression>
+													<term>
+														<identifier> TYPE: int - KIND: field - INDEX: 8 **+ score +** used </identifier>
+													</term>
+												</expression>
+													<symbol> , </symbol>
+												<expression>
+													<term>
+														<identifier> TYPE: int - KIND: field - INDEX: 7 **+ lines_scored +** used </identifier>
+													</term>
+												</expression>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ get +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+												<expression>
+													<term>
+														<integerConstant> 7 </integerConstant>
+													</term>
+												</expression>
+													<symbol> , </symbol>
+												<expression>
+													<term>
+														<integerConstant> 0 </integerConstant>
+													</term>
+												</expression>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 1 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: class_name **+ Background +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ gameOver +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+										<letStatement>
+											<keyword> let </keyword>
+											<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** used </identifier>
+											<symbol> = </symbol>
+											<expression>
+												<term>
+													<keyword> true </keyword>
+												</term>
+											</expression>
+											<symbol> ; </symbol>
+										</letStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+						</whileStatement>
+						<letStatement>
+							<keyword> let </keyword>
+							<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+							<symbol> = </symbol>
+							<expression>
+								<term>
+									<identifier> KIND: class_name **+ Keyboard +** </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ keyPressed +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+								</term>
+							</expression>
+							<symbol> ; </symbol>
+						</letStatement>
+						<ifStatement>
+							<keyword> if </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+								</term>
+								<symbol> = </symbol>
+								<term>
+									<integerConstant> 81 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<doStatement>
+									<keyword> do </keyword>
+									<identifier> KIND: class_name **+ Background +** </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ gameOver +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+									<symbol> ; </symbol>
+								</doStatement>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<keyword> true </keyword>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+							</statements>
+							<symbol> } </symbol>
+							<keyword> else </keyword>
+							<symbol> { </symbol>
+							<statements>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 131 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<letStatement>
+											<keyword> let </keyword>
+											<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+											<symbol> = </symbol>
+											<expression>
+												<term>
+													<integerConstant> 1 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ; </symbol>
+										</letStatement>
+									</statements>
+									<symbol> } </symbol>
+									<keyword> else </keyword>
+									<symbol> { </symbol>
+									<statements>
+										<ifStatement>
+											<keyword> if </keyword>
+											<symbol> ( </symbol>
+											<expression>
+												<term>
+													<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+												</term>
+												<symbol> = </symbol>
+												<term>
+													<integerConstant> 133 </integerConstant>
+												</term>
+											</expression>
+											<symbol> ) </symbol>
+											<symbol> { </symbol>
+											<statements>
+												<letStatement>
+													<keyword> let </keyword>
+													<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+													<symbol> = </symbol>
+													<expression>
+														<term>
+															<integerConstant> 2 </integerConstant>
+														</term>
+													</expression>
+													<symbol> ; </symbol>
+												</letStatement>
+											</statements>
+											<symbol> } </symbol>
+											<keyword> else </keyword>
+											<symbol> { </symbol>
+											<statements>
+												<ifStatement>
+													<keyword> if </keyword>
+													<symbol> ( </symbol>
+													<expression>
+														<term>
+															<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+														</term>
+														<symbol> = </symbol>
+														<term>
+															<integerConstant> 130 </integerConstant>
+														</term>
+													</expression>
+													<symbol> ) </symbol>
+													<symbol> { </symbol>
+													<statements>
+														<letStatement>
+															<keyword> let </keyword>
+															<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+															<symbol> = </symbol>
+															<expression>
+																<term>
+																	<integerConstant> 3 </integerConstant>
+																</term>
+															</expression>
+															<symbol> ; </symbol>
+														</letStatement>
+													</statements>
+													<symbol> } </symbol>
+													<keyword> else </keyword>
+													<symbol> { </symbol>
+													<statements>
+														<ifStatement>
+															<keyword> if </keyword>
+															<symbol> ( </symbol>
+															<expression>
+																<term>
+																	<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+																</term>
+																<symbol> = </symbol>
+																<term>
+																	<integerConstant> 132 </integerConstant>
+																</term>
+															</expression>
+															<symbol> ) </symbol>
+															<symbol> { </symbol>
+															<statements>
+																<letStatement>
+																	<keyword> let </keyword>
+																	<identifier> TYPE: int - KIND: field - INDEX: 0 **+ direction +** used </identifier>
+																	<symbol> = </symbol>
+																	<expression>
+																		<term>
+																			<integerConstant> 4 </integerConstant>
+																		</term>
+																	</expression>
+																	<symbol> ; </symbol>
+																</letStatement>
+															</statements>
+															<symbol> } </symbol>
+														</ifStatement>
+													</statements>
+													<symbol> } </symbol>
+												</ifStatement>
+											</statements>
+											<symbol> } </symbol>
+										</ifStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+						</ifStatement>
+						<whileStatement>
+							<keyword> while </keyword>
+							<symbol> ( </symbol>
+							<expression>
+								<term>
+									<symbol> ~ </symbol>
+									<term>
+										<symbol> ( </symbol>
+										<expression>
+											<term>
+												<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+											</term>
+											<symbol> = </symbol>
+											<term>
+												<integerConstant> 0 </integerConstant>
+											</term>
+										</expression>
+										<symbol> ) </symbol>
+									</term>
+								</term>
+							</expression>
+							<symbol> ) </symbol>
+							<symbol> { </symbol>
+							<statements>
+								<letStatement>
+									<keyword> let </keyword>
+									<identifier> TYPE: char - KIND: var - INDEX: 0 **+ key +** used </identifier>
+									<symbol> = </symbol>
+									<expression>
+										<term>
+											<identifier> KIND: class_name **+ Keyboard +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ keyPressed +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+									</expression>
+									<symbol> ; </symbol>
+								</letStatement>
+								<doStatement>
+									<keyword> do </keyword>
+									<identifier> KIND: subroutine_name **+ movePiece +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+									<symbol> ; </symbol>
+								</doStatement>
+								<doStatement>
+									<keyword> do </keyword>
+									<identifier> TYPE: Piece - KIND: field - INDEX: 2 **+ piece +** used </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ printPiece +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+									</expressionList>
+									<symbol> ) </symbol>
+									<symbol> ; </symbol>
+								</doStatement>
+								<doStatement>
+									<keyword> do </keyword>
+									<identifier> KIND: class_name **+ Sys +** </identifier>
+									<symbol> . </symbol>
+									<identifier> KIND: subroutine_name **+ wait +** </identifier>
+									<symbol> ( </symbol>
+									<expressionList>
+										<expression>
+											<term>
+												<integerConstant> 20 </integerConstant>
+											</term>
+										</expression>
+									</expressionList>
+									<symbol> ) </symbol>
+									<symbol> ; </symbol>
+								</doStatement>
+								<ifStatement>
+									<keyword> if </keyword>
+									<symbol> ( </symbol>
+									<expression>
+										<term>
+											<identifier> TYPE: GameField - KIND: field - INDEX: 1 **+ board +** used </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ get +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+												<expression>
+													<term>
+														<integerConstant> 7 </integerConstant>
+													</term>
+												</expression>
+													<symbol> , </symbol>
+												<expression>
+													<term>
+														<integerConstant> 0 </integerConstant>
+													</term>
+												</expression>
+											</expressionList>
+											<symbol> ) </symbol>
+										</term>
+										<symbol> = </symbol>
+										<term>
+											<integerConstant> 1 </integerConstant>
+										</term>
+									</expression>
+									<symbol> ) </symbol>
+									<symbol> { </symbol>
+									<statements>
+										<doStatement>
+											<keyword> do </keyword>
+											<identifier> KIND: class_name **+ Background +** </identifier>
+											<symbol> . </symbol>
+											<identifier> KIND: subroutine_name **+ gameOver +** </identifier>
+											<symbol> ( </symbol>
+											<expressionList>
+											</expressionList>
+											<symbol> ) </symbol>
+											<symbol> ; </symbol>
+										</doStatement>
+										<letStatement>
+											<keyword> let </keyword>
+											<identifier> TYPE: boolean - KIND: var - INDEX: 1 **+ exit +** used </identifier>
+											<symbol> = </symbol>
+											<expression>
+												<term>
+													<keyword> true </keyword>
+												</term>
+											</expression>
+											<symbol> ; </symbol>
+										</letStatement>
+									</statements>
+									<symbol> } </symbol>
+								</ifStatement>
+							</statements>
+							<symbol> } </symbol>
+						</whileStatement>
+					</statements>
+					<symbol> } </symbol>
+				</whileStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<symbol> } </symbol>
+</class>

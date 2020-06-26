@@ -1,0 +1,787 @@
+/**
+*
+*/
+
+class Piece {
+	field char type;
+	field int x_offset;
+	field int y_offset;
+	field Array x_field_pos;
+	field Array y_field_pos;
+	field Array connectivity;
+	field int rotation;
+	
+	field Array row0;
+	field Array row1;
+	field Array row2;
+	field Array row3;
+	
+	field int move_down;
+	field int move_side;
+	
+	static char n;
+	static char s;
+	static char e;
+	static char w;
+	static char empty;
+
+	constructor Piece new(char t)
+	{
+		var int i;
+		var int j;
+			
+		let type = t;
+		let rotation = 0;
+		let connectivity = Array.new(4);
+		let row0 = Array.new(4);
+		let row1 = Array.new(4);
+		let row2 = Array.new(4);
+		let row3 = Array.new(4);
+		
+		let x_offset = 0;
+		let y_offset = 0;
+		
+		let move_down = 0;
+		let move_side = 0;
+
+		let x_field_pos = Array.new(5);	// for a couple of pieces there are 4 connectivities, so 5 positions
+		let y_field_pos = Array.new(5);
+		let x_field_pos[0] = 5 + x_offset;
+		let y_field_pos[0] = 0 + y_offset;
+		
+		do setFieldPos();
+		do drawPiece();
+
+	return this;		
+	}
+	
+    /** Disposes this piece. */
+    method void dispose() 
+    {
+	   do row0.dispose();
+	   do row1.dispose();
+	   do row2.dispose();
+	   do row3.dispose();
+	   do connectivity.dispose();
+	   do x_field_pos.dispose();
+	   do y_field_pos.dispose();
+	   
+       do Memory.deAlloc(this);
+       
+    return;
+    }
+    
+    method void setFieldPos()
+    {
+		var int i;
+		
+		do clearRows();
+		// get coordinates of top left corner of back_grid in terms of board position
+		let x_field_pos[0] = x_field_pos[0] - x_offset;
+		let y_field_pos[0] = y_field_pos[0] - y_offset;
+		
+		do readPieceRotation();	
+		let x_field_pos[0] = x_field_pos[0] + x_offset;
+		let y_field_pos[0] = y_field_pos[0] + y_offset;
+		
+		let i = 0;
+		while (~(i = 4))	// 4 is the max number of block connections out of any piece
+		{
+			if (connectivity[i] = n)//110)  // n
+			{
+				let x_field_pos[i + 1] = x_field_pos[i];
+				let y_field_pos[i + 1] = y_field_pos[i] - 1;				
+			}
+			else {if (connectivity[i] = e)//101)  // e
+			{
+				let x_field_pos[i + 1] = x_field_pos[i] + 1;
+				let y_field_pos[i + 1] = y_field_pos[i];				
+			}
+			else {if (connectivity[i] = s) //115) // s
+			{
+				let x_field_pos[i + 1] = x_field_pos[i];
+				let y_field_pos[i + 1] = y_field_pos[i] + 1;
+			}
+			else {if (connectivity[i] = w)//119)  // w
+			{
+				let x_field_pos[i + 1] = x_field_pos[i] - 1;
+				let y_field_pos[i + 1] = y_field_pos[i];
+			} 
+			else {if (connectivity[i] = empty)
+			{
+				let x_field_pos[i + 1] = x_field_pos[i];
+				let y_field_pos[i + 1] = y_field_pos[i];
+			}}}}}
+			let i = i + 1;
+		}
+		
+    return;
+    }
+    
+    method void clearRows()
+    {	
+		var int i;
+		
+		let i = 0;
+		while(~(i = 4))
+		{
+			let row0[i] = 0;
+			let row1[i] = 0;
+			let row2[i] = 0;
+			let row3[i] = 0;
+			
+			let i = i + 1;
+		}
+		
+    return;
+    }
+    
+    method void drawPiece()
+    {
+		var int i;
+		var int current_x;
+		var int current_y;
+		
+		do readPieceRotation();
+		
+		let current_x = x_offset;
+		let current_y = y_offset;
+		do set(current_x, current_y);
+		
+		let i = 0;
+		while (~(i = 4))	// 4 is the max number of block connections out of any piece
+		{
+			if (connectivity[i] = n)//110)  // n
+			{
+				let current_x = current_x;
+				let current_y = current_y - 1;				
+			}
+			else {if (connectivity[i] = e)//101)  // e
+			{
+				let current_x = current_x + 1;
+				let current_y = current_y;			
+			}
+			else {if (connectivity[i] = s)//115)  // s
+			{
+				let current_x = current_x;
+				let current_y = current_y + 1;
+			}
+			else {if (connectivity[i] = w)//119)  // w
+			{
+				let current_x = current_x - 1;
+				let current_y = current_y;
+			}}}}
+			do set(current_x, current_y);
+			let i = i + 1;
+		}
+	
+    return;
+    }
+    
+    method void readPieceRotation()
+    {		
+		let n = 110;
+		let s = 115;
+		let e = 101;
+		let w = 119;
+		let empty = 32;
+		
+		if (type = 105) // ascii for i = 105
+		{
+			if ((rotation = 0) | (rotation = 2))
+			{
+				let x_offset = 0;
+				let y_offset = 2;
+				let connectivity[0] = e;
+				let connectivity[1] = e;
+				let connectivity[2] = e;
+				let connectivity[3] = empty;
+			} else {
+			if ((rotation = 1) | (rotation = 3))
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = s;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			}}
+		} else {
+		if (type = 122)	// z
+		{
+			if ((rotation = 0) | (rotation = 2))
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = e;
+				let connectivity[1] = s;
+				let connectivity[2] = e;
+				let connectivity[3] = empty;
+			} else {
+			if ((rotation = 1) | (rotation = 3))
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = w;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			}}
+		} else {
+		if (type = 115)	// s
+		{
+			if ((rotation = 0) | (rotation = 2))
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = w;
+				let connectivity[1] = s;
+				let connectivity[2] = w;
+				let connectivity[3] = empty;
+			} else {
+			if ((rotation = 1) | (rotation = 3))
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = e;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			}}
+		} else {
+		if (type = 116)	// t
+		{
+			if (rotation = 0)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = e;
+				let connectivity[1] = s;
+				let connectivity[2] = n;
+				let connectivity[3] = e;
+			} else {
+			if (rotation = 1)
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = w;
+				let connectivity[2] = e;
+				let connectivity[3] = s;
+			} else {
+			if (rotation = 2)
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = w;
+				let connectivity[2] = e;
+				let connectivity[3] = e;
+			} else {
+			if (rotation = 3)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = e;
+				let connectivity[2] = w;
+				let connectivity[3] = s;
+			}}}}
+		} else {
+		if (type = 108)	// l
+		{
+			if (rotation = 0)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = s;
+				let connectivity[2] = e;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 1)
+			{
+				let x_offset = 3;
+				let y_offset = 0;
+				let connectivity[0] = w;
+				let connectivity[1] = w;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 2)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = e;
+				let connectivity[1] = s;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 3)
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = w;
+				let connectivity[2] = w;
+				let connectivity[3] = empty;
+			}}}}
+		} else {
+		if (type = 106)	// j
+		{
+			if (rotation = 0)
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = s;
+				let connectivity[2] = w;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 1)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = s;
+				let connectivity[1] = e;
+				let connectivity[2] = e;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 2)
+			{
+				let x_offset = 2;
+				let y_offset = 0;
+				let connectivity[0] = w;
+				let connectivity[1] = s;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			} else {
+			if (rotation = 3)
+			{
+				let x_offset = 1;
+				let y_offset = 0;
+				let connectivity[0] = e;
+				let connectivity[1] = e;
+				let connectivity[2] = s;
+				let connectivity[3] = empty;
+			}}}}
+		} else {
+		if (type = 111)	// o
+		{
+			let x_offset = 1;
+			let y_offset = 0;
+			let connectivity[0] = e;
+			let connectivity[1] = s;
+			let connectivity[2] = w;
+			let connectivity[3] = empty;
+		}}}}}}}
+		
+    return;
+    }
+    
+    method void set(int x, int y) // value will always be 1 useless param here,// int value)
+    {
+		if (y = 0) {let row0[x] = 1;}
+		else {if (y = 1) {let row1[x] = 1;}
+		else {if (y = 2) {let row2[x] = 1;}
+		else {if (y = 3) {let row3[x] = 1;}}}}
+		
+	return;
+    }
+    
+    method int get(int x, int y)
+    {
+		var int return_value;
+		
+		if (y = 0) {let return_value = row0[x];}
+		else {if (y = 1) {let return_value = row1[x];}
+		else {if (y = 2) {let return_value = row2[x];}
+		else {if (y = 3) {let return_value = row3[x];}}}}
+		
+	return return_value;
+    }
+    
+    method int getXPos(int i)
+    {
+		var int return_value;
+		let return_value = x_field_pos[i];
+		
+	return return_value;
+    }
+    
+    method int getYPos(int j)
+    {
+		var int return_value;
+		let return_value = y_field_pos[j];
+		
+	return return_value;
+    }
+	
+	method void printPiece()
+	{
+		var int i;
+		var int j;
+		
+		do drawPiece();
+		
+		let i = 0;
+		while (~(i = 4))
+		{	
+			if (row0[i] = 1)
+				{let j = 0; do printBlock(i, j, true);}
+			if (row1[i] = 1)
+				{let j = 1; do printBlock(i, j, true);}
+			if (row2[i] = 1)
+				{let j = 2; do printBlock(i, j, true);}
+			if (row3[i] = 1)
+				{let j = 3; do printBlock(i, j, true);}
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void erasePiece()
+	{
+		var int i;
+		var int j;
+		
+		let i = 0;
+		while (~(i = 4))
+		{	
+			if (row0[i] = 1)
+				{let j = 0; do printBlock(i, j, false);}
+			if (row1[i] = 1)
+				{let j = 1; do printBlock(i, j, false);}
+			if (row2[i] = 1)
+				{let j = 2; do printBlock(i, j, false);}
+			if (row3[i] = 1)
+				{let j = 3; do printBlock(i, j, false);}
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void printBlock(int i, int j, bool select)
+	{
+		do Screen.setColor(select);//}	
+		// below: x1 coordinate 273 because 272 = 256 (=x_0 - 16) + 16 = x_0 --> +1 white interstice between blocks
+		// same logic to compute other coordinates
+		do Screen.drawRectangle(352 + (16 * i) + (16 * move_side), 10 + (16 * j) + (16 * move_down),
+								366 + (16 * i) + (16 * move_side), 24 + (16 * j) + (16 * move_down)); 
+	
+	return;
+	}
+	
+	method void checkRows()
+	{
+		do Output.println();
+		do Output.printInt(row0[0]);
+		do Output.printChar(32);
+		do Output.printInt(row0[1]);
+		do Output.printChar(32);
+		do Output.printInt(row0[2]);
+		do Output.printChar(32);
+		do Output.printInt(row0[3]);
+		do Output.printChar(32);
+		do Output.println();
+		
+		do Output.printInt(row1[0]);
+		do Output.printChar(32);
+		do Output.printInt(row1[1]);
+		do Output.printChar(32);
+		do Output.printInt(row1[2]);
+		do Output.printChar(32);
+		do Output.printInt(row1[3]);
+		do Output.printChar(32);
+		do Output.println();
+		
+		do Output.printInt(row2[0]);
+		do Output.printChar(32);
+		do Output.printInt(row2[1]);
+		do Output.printChar(32);
+		do Output.printInt(row2[2]);
+		do Output.printChar(32);
+		do Output.printInt(row2[3]);
+		do Output.printChar(32);
+		do Output.println();
+		
+		do Output.printInt(row3[0]);
+		do Output.printChar(32);
+		do Output.printInt(row3[1]);
+		do Output.printChar(32);
+		do Output.printInt(row3[2]);
+		do Output.printChar(32);
+		do Output.printInt(row3[3]);
+		do Output.printChar(32);
+		do Output.println();
+		
+	return;
+	}
+	
+	method void moveDown()
+	{
+		var int i;
+		
+		do erasePiece();
+		
+		let move_down = move_down + 1;
+		
+		let i = 0;
+		while (~(i = 5))
+		{
+			let y_field_pos[i] = y_field_pos[i] + 1;
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void moveLeft()
+	{
+		var int i;
+		
+		do erasePiece();
+		
+		let move_side = move_side - 1;
+
+		let i = 0;
+		while (~(i = 5))
+		{
+			let x_field_pos[i] = x_field_pos[i] - 1;
+			let i = i + 1;
+		}
+				
+	return;
+	}
+	
+	method void moveRight()
+	{
+		var int i;
+		
+		do erasePiece();
+		
+		let move_side = move_side + 1;
+		
+		let i = 0;
+		while (~(i = 5))
+		{
+			let x_field_pos[i] = x_field_pos[i] + 1;
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void rotateAndCheck()
+	{
+		var bool wall_crossed;
+		let wall_crossed = false;
+		
+		do erasePiece();
+		
+		do rotate();
+		let wall_crossed = checkWall();
+		if (wall_crossed = true) {do unrotate();}
+		else {do erasePiece();}
+		
+	return;
+	}
+	
+	method void rotate()
+	{
+		let rotation = rotation + 1;	    
+		if (rotation > 3) {let rotation = 0;}
+		do setFieldPos();
+			    
+	return;
+	}
+	
+	method void unrotate()
+	{
+		let rotation = rotation - 1;
+		if (rotation < 0) {let rotation = 3;}
+		do setFieldPos();
+		
+	return;
+	}
+	
+	method bool checkLeftWall()
+	{
+		var bool left_wall_crossed;
+		var int i;
+		
+		let left_wall_crossed = false;
+		let i = 0;
+		
+		while (~(i = 5))
+		{
+			if (((x_field_pos[i] - 1) < 0) | ((y_field_pos[i] + 1) > 13)) // check also for bottom wall to make it 'sticky'
+			{
+				let left_wall_crossed = true;
+			}
+			let i = i + 1;
+		}
+		
+	return left_wall_crossed;
+	}
+	
+	method bool checkRightWall()
+	{
+		var bool right_wall_crossed;
+		var int i;
+		
+		let right_wall_crossed = false;
+		let i = 0;
+		
+		while (~(i = 5))
+		{
+			if (((x_field_pos[i] + 1) > 9) | ((y_field_pos[i] + 1) > 13)) // check also for bottom wall to make it 'sticky'
+			{
+				let right_wall_crossed = true;
+			}
+			let i = i + 1;
+		}
+		
+	return right_wall_crossed;
+	}
+	
+	method bool checkBottomWall()
+	{
+		var bool bottom_wall_crossed;
+		var int i;
+		
+		let bottom_wall_crossed = false;
+		let i = 0;
+		
+		while (~(i = 5))
+		{
+			if ((y_field_pos[i] + 1) > 13)
+			{
+				let bottom_wall_crossed = true;
+			}
+			let i = i + 1;
+		}
+		
+	return bottom_wall_crossed;
+	}
+
+	method bool checkTopWall()
+	{
+		var bool top_wall_crossed;
+		var int i;
+		
+		let top_wall_crossed = false;
+		let i = 0;
+		
+		while (~(i = 5))
+		{
+			if ((y_field_pos[i] - 1) < 0)
+			{
+				let top_wall_crossed = true;
+			}
+			let i = i + 1;
+		}
+		
+	return top_wall_crossed;
+	}
+		
+	method bool checkWall()
+	{
+		var bool wall_crossed;
+		var bool left_wall_crossed;
+		var bool right_wall_crossed;
+		var bool bottom_wall_crossed;
+		var bool top_wall_crossed;
+		
+		let wall_crossed = false;
+		let left_wall_crossed = checkLeftWall();
+		let right_wall_crossed = checkRightWall();
+		let bottom_wall_crossed = checkBottomWall();
+		let top_wall_crossed = checkTopWall();
+
+		if ((left_wall_crossed) | (right_wall_crossed) | (bottom_wall_crossed) | (top_wall_crossed)) 
+			{let wall_crossed = true;}
+		
+	return wall_crossed;
+	}
+	
+	////////////////////////////////
+	// PIECES:
+	// i = 105		piece_type = 0
+	// z = 122		piece_type = 1
+	// s = 115		piece_type = 2
+	// t = 116		piece_type = 3
+	// l = 108		piece_type = 4
+	// j = 106		piece_type = 5
+	// o = 111		piece_type = 6
+	////////////////////////////////
+	function char pickType(int seed)
+	{
+		var int ret_type;
+		
+			  if (seed = 0) {let ret_type = 105;}
+		else {if (seed = 1) {let ret_type = 122;}
+		else {if (seed = 2) {let ret_type = 115;}
+		else {if (seed = 3) {let ret_type = 116;}
+		else {if (seed = 4) {let ret_type = 108;}
+		else {if (seed = 5) {let ret_type = 106;}
+		else {if (seed = 6) {let ret_type = 111;}}}}}}}
+		
+	return ret_type;
+	}
+	
+	method void printNextPiece()
+	{
+		var int i;
+		var int j;
+		
+		let i = 0;
+		while (~(i = 4))
+		{	
+			if (row0[i] = 1)
+				{let j = 0; do printNextBlock(i, j, true);}
+			if (row1[i] = 1)
+				{let j = 1; do printNextBlock(i, j, true);}
+			if (row2[i] = 1)
+				{let j = 2; do printNextBlock(i, j, true);}
+			if (row3[i] = 1)
+				{let j = 3; do printNextBlock(i, j, true);}
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void eraseNextPiece()
+	{
+		var int i;
+		var int j;
+		
+		let i = 0;
+		while (~(i = 4))
+		{	
+			if (row0[i] = 1)
+				{let j = 0; do printNextBlock(i, j, false);}
+			if (row1[i] = 1)
+				{let j = 1; do printNextBlock(i, j, false);}
+			if (row2[i] = 1)
+				{let j = 2; do printNextBlock(i, j, false);}
+			if (row3[i] = 1)
+				{let j = 3; do printNextBlock(i, j, false);}
+			let i = i + 1;
+		}
+		
+	return;
+	}
+	
+	method void printNextBlock(int i, int j, bool select)
+	{
+		do Screen.setColor(select);	
+		do Screen.drawRectangle(108 + (16 * i), 152 + (16 * j),
+					            122 + (16 * i), 166 + (16 * j)); 
+	
+	return;
+	}
+}

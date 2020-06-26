@@ -1,0 +1,663 @@
+function TetrisGame.new 0
+push constant 9
+call Memory.alloc 1
+pop pointer 0
+push constant 0
+pop this 7
+push constant 0
+pop this 8
+call Background.createWalls 0
+pop temp 0
+push argument 0
+call Background.createLeftPanel 1
+pop temp 0
+push this 8
+push this 7
+call Background.printScore 2
+pop temp 0
+push constant 0
+pop this 0
+push constant 10
+push constant 14
+call GameField.new 2
+pop this 1
+call LFSR32Rand.new 0
+pop this 4
+push this 4
+push argument 1
+push constant 675
+call LFSR32Rand.seed 3
+pop temp 0
+push this 4
+push constant 0
+push constant 6
+call LFSR32Rand.randRange 3
+pop this 6
+push this 4
+push constant 0
+push constant 6
+call LFSR32Rand.randRange 3
+pop this 5
+push pointer 0
+return
+function TetrisGame.dispose 0
+push argument 0
+pop pointer 0
+push this 2
+call Piece.dispose 1
+pop temp 0
+push this 3
+call Piece.dispose 1
+pop temp 0
+push this 1
+call GameField.dispose 1
+pop temp 0
+push this 4
+call LFSR32Rand.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function TetrisGame.movePiece 4
+push argument 0
+pop pointer 0
+push pointer 0
+call TetrisGame.leftCollision 1
+pop local 1
+push pointer 0
+call TetrisGame.rightCollision 1
+pop local 2
+push pointer 0
+call TetrisGame.downCollision 1
+pop local 3
+push this 0
+push constant 1
+eq
+not
+if-goto ELSE1
+push local 1
+push constant 0
+eq
+push local 2
+push constant 0
+eq
+and
+push local 3
+push constant 0
+eq
+and
+not
+if-goto ELSE2
+push this 2
+call Piece.rotateAndCheck 1
+pop temp 0
+goto END_IF2
+label ELSE2
+label END_IF2
+goto END_IF1
+label ELSE1
+push constant 0
+pop local 0
+push this 0
+push constant 2
+eq
+not
+if-goto ELSE3
+push this 2
+call Piece.checkBottomWall 1
+pop local 0
+push local 0
+push constant 0
+eq
+push local 3
+push constant 0
+eq
+and
+not
+if-goto ELSE4
+push this 2
+call Piece.moveDown 1
+pop temp 0
+goto END_IF4
+label ELSE4
+push pointer 0
+call TetrisGame.pieceToBoard 1
+pop temp 0
+push this 8
+push this 7
+call Background.printScore 2
+pop temp 0
+label END_IF4
+goto END_IF3
+label ELSE3
+push this 0
+push constant 3
+eq
+not
+if-goto ELSE5
+push this 2
+call Piece.checkLeftWall 1
+pop local 0
+push local 0
+push constant 0
+eq
+push local 1
+push constant 0
+eq
+and
+not
+if-goto ELSE6
+push this 2
+call Piece.moveLeft 1
+pop temp 0
+goto END_IF6
+label ELSE6
+label END_IF6
+goto END_IF5
+label ELSE5
+push this 0
+push constant 4
+eq
+not
+if-goto ELSE7
+push this 2
+call Piece.checkRightWall 1
+pop local 0
+push local 0
+push constant 0
+eq
+push local 2
+push constant 0
+eq
+and
+not
+if-goto ELSE8
+push this 2
+call Piece.moveRight 1
+pop temp 0
+goto END_IF8
+label ELSE8
+label END_IF8
+goto END_IF7
+label ELSE7
+label END_IF7
+label END_IF5
+label END_IF3
+push constant 0
+pop local 0
+label END_IF1
+push constant 0
+pop this 0
+push constant 0
+return
+function TetrisGame.pieceToBoard 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE1
+push local 0
+push constant 5
+lt
+not
+if-goto END_WHILE1
+push this 1
+push this 2
+push local 0
+call Piece.getXPos 2
+push this 2
+push local 0
+call Piece.getYPos 2
+call GameField.set 3
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE1
+label END_WHILE1
+push this 1
+push constant 0
+not
+call GameField.printField 2
+pop temp 0
+push this 1
+call GameField.checkFilledLines 1
+pop local 1
+push this 8
+push constant 1
+add
+pop this 8
+push pointer 0
+push local 1
+call TetrisGame.addLinesToScore 2
+pop temp 0
+push this 6
+pop this 5
+push this 4
+push constant 0
+push constant 6
+call LFSR32Rand.randRange 3
+pop this 6
+push this 5
+call Piece.pickType 1
+pop static 0
+push this 6
+call Piece.pickType 1
+pop static 1
+push this 3
+call Piece.eraseNextPiece 1
+pop temp 0
+push this 2
+call Piece.dispose 1
+pop temp 0
+push static 0
+call Piece.new 1
+pop this 2
+push this 3
+call Piece.dispose 1
+pop temp 0
+push static 1
+call Piece.new 1
+pop this 3
+push this 2
+call Piece.printPiece 1
+pop temp 0
+push this 3
+call Piece.printNextPiece 1
+pop temp 0
+push constant 0
+return
+function TetrisGame.addLinesToScore 0
+push argument 0
+pop pointer 0
+push this 7
+push argument 1
+add
+pop this 7
+push argument 1
+push constant 1
+eq
+not
+if-goto ELSE9
+push this 8
+push constant 30
+add
+pop this 8
+goto END_IF9
+label ELSE9
+push argument 1
+push constant 2
+eq
+not
+if-goto ELSE10
+push this 8
+push constant 100
+add
+pop this 8
+goto END_IF10
+label ELSE10
+push argument 1
+push constant 3
+eq
+not
+if-goto ELSE11
+push this 8
+push constant 200
+add
+pop this 8
+goto END_IF11
+label ELSE11
+push argument 1
+push constant 4
+eq
+not
+if-goto ELSE12
+push this 8
+push constant 500
+add
+pop this 8
+goto END_IF12
+label ELSE12
+label END_IF12
+label END_IF11
+label END_IF10
+label END_IF9
+push constant 0
+return
+function TetrisGame.leftCollision 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE2
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE2
+push this 1
+push this 2
+push local 1
+call Piece.getXPos 2
+push constant 1
+sub
+push this 2
+push local 1
+call Piece.getYPos 2
+call GameField.get 3
+push constant 1
+eq
+not
+if-goto ELSE13
+push constant 0
+not
+pop local 0
+goto END_IF13
+label ELSE13
+label END_IF13
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE2
+label END_WHILE2
+push local 0
+return
+function TetrisGame.rightCollision 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE3
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE3
+push this 1
+push this 2
+push local 1
+call Piece.getXPos 2
+push constant 1
+add
+push this 2
+push local 1
+call Piece.getYPos 2
+call GameField.get 3
+push constant 1
+eq
+not
+if-goto ELSE14
+push constant 0
+not
+pop local 0
+goto END_IF14
+label ELSE14
+label END_IF14
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE3
+label END_WHILE3
+push local 0
+return
+function TetrisGame.downCollision 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE4
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE4
+push this 1
+push this 2
+push local 1
+call Piece.getXPos 2
+push this 2
+push local 1
+call Piece.getYPos 2
+push constant 1
+add
+call GameField.get 3
+push constant 1
+eq
+not
+if-goto ELSE15
+push constant 0
+not
+pop local 0
+goto END_IF15
+label ELSE15
+label END_IF15
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE4
+label END_WHILE4
+push local 0
+return
+function TetrisGame.advance 2
+push argument 0
+pop pointer 0
+push this 2
+call Piece.checkBottomWall 1
+pop local 0
+push pointer 0
+call TetrisGame.downCollision 1
+pop local 1
+push local 0
+push constant 0
+eq
+push local 1
+push constant 0
+eq
+and
+not
+if-goto ELSE16
+push this 2
+call Piece.moveDown 1
+pop temp 0
+goto END_IF16
+label ELSE16
+label END_IF16
+push this 2
+call Piece.printPiece 1
+pop temp 0
+push constant 0
+return
+function TetrisGame.run 3
+push argument 0
+pop pointer 0
+push constant 0
+pop local 1
+push this 1
+push constant 0
+not
+call GameField.printField 2
+pop temp 0
+push this 4
+push constant 0
+push constant 6
+call LFSR32Rand.randRange 3
+pop this 6
+push this 5
+call Piece.pickType 1
+pop static 0
+push this 6
+call Piece.pickType 1
+pop static 1
+push static 0
+call Piece.new 1
+pop this 2
+push this 2
+call Piece.printPiece 1
+pop temp 0
+push static 1
+call Piece.new 1
+pop this 3
+push this 3
+call Piece.printNextPiece 1
+pop temp 0
+label WHILE5
+push local 1
+not
+not
+if-goto END_WHILE5
+label WHILE6
+push local 0
+push constant 0
+eq
+not
+if-goto END_WHILE6
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call TetrisGame.downCollision 1
+push this 2
+call Piece.checkBottomWall 1
+or
+not
+if-goto ELSE17
+push constant 20
+call Sys.wait 1
+pop temp 0
+push pointer 0
+call TetrisGame.pieceToBoard 1
+pop temp 0
+push this 8
+push this 7
+call Background.printScore 2
+pop temp 0
+goto END_IF17
+label ELSE17
+label END_IF17
+push this 1
+push constant 7
+push constant 0
+call GameField.get 3
+push constant 1
+eq
+not
+if-goto ELSE18
+call Background.gameOver 0
+pop temp 0
+push constant 0
+not
+pop local 1
+goto END_IF18
+label ELSE18
+label END_IF18
+goto WHILE6
+label END_WHILE6
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 81
+eq
+not
+if-goto ELSE19
+call Background.gameOver 0
+pop temp 0
+push constant 0
+not
+pop local 1
+goto END_IF19
+label ELSE19
+push local 0
+push constant 131
+eq
+not
+if-goto ELSE20
+push constant 1
+pop this 0
+goto END_IF20
+label ELSE20
+push local 0
+push constant 133
+eq
+not
+if-goto ELSE21
+push constant 2
+pop this 0
+goto END_IF21
+label ELSE21
+push local 0
+push constant 130
+eq
+not
+if-goto ELSE22
+push constant 3
+pop this 0
+goto END_IF22
+label ELSE22
+push local 0
+push constant 132
+eq
+not
+if-goto ELSE23
+push constant 4
+pop this 0
+goto END_IF23
+label ELSE23
+label END_IF23
+label END_IF22
+label END_IF21
+label END_IF20
+label END_IF19
+label WHILE7
+push local 0
+push constant 0
+eq
+not
+not
+if-goto END_WHILE7
+call Keyboard.keyPressed 0
+pop local 0
+push pointer 0
+call TetrisGame.movePiece 1
+pop temp 0
+push this 2
+call Piece.printPiece 1
+pop temp 0
+push constant 20
+call Sys.wait 1
+pop temp 0
+push this 1
+push constant 7
+push constant 0
+call GameField.get 3
+push constant 1
+eq
+not
+if-goto ELSE24
+call Background.gameOver 0
+pop temp 0
+push constant 0
+not
+pop local 1
+goto END_IF24
+label ELSE24
+label END_IF24
+goto WHILE7
+label END_WHILE7
+goto WHILE5
+label END_WHILE5
+push constant 0
+return

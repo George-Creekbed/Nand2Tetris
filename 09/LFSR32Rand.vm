@@ -1,0 +1,196 @@
+function LFSR32Rand.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push pointer 0
+push constant 0
+push constant 0
+call LFSR32Rand.seed 3
+pop temp 0
+push pointer 0
+return
+function LFSR32Rand.dispose 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function LFSR32Rand.seed 0
+push argument 0
+pop pointer 0
+push argument 1
+push argument 2
+or
+push constant 0
+eq
+not
+if-goto ELSE1
+push constant 23294
+pop this 0
+push constant 4083
+neg
+pop this 1
+goto END_IF1
+label ELSE1
+push argument 1
+pop this 0
+push argument 2
+pop this 1
+label END_IF1
+push constant 0
+return
+function LFSR32Rand.randBit 1
+push argument 0
+pop pointer 0
+push this 1
+push this 0
+or
+push constant 0
+eq
+not
+if-goto ELSE2
+push pointer 0
+push constant 0
+push constant 0
+call LFSR32Rand.seed 3
+pop temp 0
+goto END_IF2
+label ELSE2
+label END_IF2
+push this 1
+push constant 0
+lt
+push this 1
+push constant 64
+and
+push constant 64
+eq
+add
+push this 0
+push constant 4096
+and
+push constant 4096
+eq
+add
+push this 0
+push constant 32
+and
+push constant 32
+eq
+add
+push constant 1
+and
+pop local 0
+push this 1
+push this 1
+add
+push this 0
+push constant 0
+lt
+sub
+pop this 1
+push this 0
+push this 0
+add
+push local 0
+add
+pop this 0
+push local 0
+return
+function LFSR32Rand.randInt 1
+push argument 0
+pop pointer 0
+label WHILE1
+push local 0
+push constant 16
+lt
+not
+if-goto END_WHILE1
+push pointer 0
+call LFSR32Rand.randBit 1
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE1
+label END_WHILE1
+push this 0
+return
+function LFSR32Rand.rand 0
+push argument 0
+pop pointer 0
+push pointer 0
+call LFSR32Rand.randInt 1
+push constant 32767
+and
+return
+function LFSR32Rand.randRange 3
+push argument 0
+pop pointer 0
+push pointer 0
+call LFSR32Rand.rand 1
+pop local 0
+push argument 2
+push argument 1
+sub
+pop local 1
+push local 1
+push constant 32767
+eq
+not
+if-goto ELSE3
+push argument 1
+push local 0
+add
+return
+goto END_IF3
+label ELSE3
+label END_IF3
+push local 1
+push constant 1
+lt
+not
+if-goto ELSE4
+push argument 1
+return
+goto END_IF4
+label ELSE4
+label END_IF4
+push constant 32767
+push local 1
+push constant 1
+add
+call Math.divide 2
+pop local 1
+push argument 1
+push local 0
+push local 1
+call Math.divide 2
+add
+pop local 2
+label WHILE2
+push local 0
+push constant 32767
+eq
+push local 2
+push argument 2
+gt
+or
+not
+if-goto END_WHILE2
+push pointer 0
+call LFSR32Rand.rand 1
+pop local 0
+push argument 1
+push local 0
+push local 1
+call Math.divide 2
+add
+pop local 2
+goto WHILE2
+label END_WHILE2
+push local 2
+return

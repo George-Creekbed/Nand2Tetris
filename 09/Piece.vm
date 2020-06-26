@@ -1,0 +1,2763 @@
+function Piece.new 2
+push constant 13
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push constant 0
+pop this 6
+push constant 4
+call Array.new 1
+pop this 5
+push constant 4
+call Array.new 1
+pop this 7
+push constant 4
+call Array.new 1
+pop this 8
+push constant 4
+call Array.new 1
+pop this 9
+push constant 4
+call Array.new 1
+pop this 10
+push constant 0
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+pop this 11
+push constant 0
+pop this 12
+push constant 5
+call Array.new 1
+pop this 3
+push constant 5
+call Array.new 1
+pop this 4
+push constant 0
+push this 3
+add
+push constant 5
+push this 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 4
+add
+push constant 0
+push this 2
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push pointer 0
+call Piece.setFieldPos 1
+pop temp 0
+push pointer 0
+call Piece.drawPiece 1
+pop temp 0
+push pointer 0
+return
+function Piece.dispose 0
+push argument 0
+pop pointer 0
+push this 7
+call Array.dispose 1
+pop temp 0
+push this 8
+call Array.dispose 1
+pop temp 0
+push this 9
+call Array.dispose 1
+pop temp 0
+push this 10
+call Array.dispose 1
+pop temp 0
+push this 5
+call Array.dispose 1
+pop temp 0
+push this 3
+call Array.dispose 1
+pop temp 0
+push this 4
+call Array.dispose 1
+pop temp 0
+push pointer 0
+call Memory.deAlloc 1
+pop temp 0
+push constant 0
+return
+function Piece.setFieldPos 1
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.clearRows 1
+pop temp 0
+push constant 0
+push this 3
+add
+push constant 0
+push this 3
+add
+pop pointer 1
+push that 0
+push this 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 4
+add
+push constant 0
+push this 4
+add
+pop pointer 1
+push that 0
+push this 2
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push pointer 0
+call Piece.readPieceRotation 1
+pop temp 0
+push constant 0
+push this 3
+add
+push constant 0
+push this 3
+add
+pop pointer 1
+push that 0
+push this 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+push this 4
+add
+push constant 0
+push this 4
+add
+pop pointer 1
+push that 0
+push this 2
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+pop local 0
+label WHILE1
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE1
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 0
+eq
+not
+if-goto ELSE1
+push local 0
+push constant 1
+add
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF1
+label ELSE1
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 2
+eq
+not
+if-goto ELSE2
+push local 0
+push constant 1
+add
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF2
+label ELSE2
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 1
+eq
+not
+if-goto ELSE3
+push local 0
+push constant 1
+add
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF3
+label ELSE3
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 3
+eq
+not
+if-goto ELSE4
+push local 0
+push constant 1
+add
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF4
+label ELSE4
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 4
+eq
+not
+if-goto ELSE5
+push local 0
+push constant 1
+add
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF5
+label ELSE5
+label END_IF5
+label END_IF4
+label END_IF3
+label END_IF2
+label END_IF1
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE1
+label END_WHILE1
+push constant 0
+return
+function Piece.clearRows 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE2
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE2
+push local 0
+push this 7
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 8
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 9
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push this 10
+add
+push constant 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE2
+label END_WHILE2
+push constant 0
+return
+function Piece.drawPiece 3
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.readPieceRotation 1
+pop temp 0
+push this 1
+pop local 1
+push this 2
+pop local 2
+push pointer 0
+push local 1
+push local 2
+call Piece.set 3
+pop temp 0
+push constant 0
+pop local 0
+label WHILE3
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE3
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 0
+eq
+not
+if-goto ELSE6
+push local 1
+pop local 1
+push local 2
+push constant 1
+sub
+pop local 2
+goto END_IF6
+label ELSE6
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 2
+eq
+not
+if-goto ELSE7
+push local 1
+push constant 1
+add
+pop local 1
+push local 2
+pop local 2
+goto END_IF7
+label ELSE7
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 1
+eq
+not
+if-goto ELSE8
+push local 1
+pop local 1
+push local 2
+push constant 1
+add
+pop local 2
+goto END_IF8
+label ELSE8
+push local 0
+push this 5
+add
+pop pointer 1
+push that 0
+push static 3
+eq
+not
+if-goto ELSE9
+push local 1
+push constant 1
+sub
+pop local 1
+push local 2
+pop local 2
+goto END_IF9
+label ELSE9
+label END_IF9
+label END_IF8
+label END_IF7
+label END_IF6
+push pointer 0
+push local 1
+push local 2
+call Piece.set 3
+pop temp 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE3
+label END_WHILE3
+push constant 0
+return
+function Piece.readPieceRotation 0
+push argument 0
+pop pointer 0
+push constant 110
+pop static 0
+push constant 115
+pop static 1
+push constant 101
+pop static 2
+push constant 119
+pop static 3
+push constant 32
+pop static 4
+push this 0
+push constant 105
+eq
+not
+if-goto ELSE10
+push this 6
+push constant 0
+eq
+push this 6
+push constant 2
+eq
+or
+not
+if-goto ELSE11
+push constant 0
+pop this 1
+push constant 2
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF11
+label ELSE11
+push this 6
+push constant 1
+eq
+push this 6
+push constant 3
+eq
+or
+not
+if-goto ELSE12
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF12
+label ELSE12
+label END_IF12
+label END_IF11
+goto END_IF10
+label ELSE10
+push this 0
+push constant 122
+eq
+not
+if-goto ELSE13
+push this 6
+push constant 0
+eq
+push this 6
+push constant 2
+eq
+or
+not
+if-goto ELSE14
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF14
+label ELSE14
+push this 6
+push constant 1
+eq
+push this 6
+push constant 3
+eq
+or
+not
+if-goto ELSE15
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF15
+label ELSE15
+label END_IF15
+label END_IF14
+goto END_IF13
+label ELSE13
+push this 0
+push constant 115
+eq
+not
+if-goto ELSE16
+push this 6
+push constant 0
+eq
+push this 6
+push constant 2
+eq
+or
+not
+if-goto ELSE17
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF17
+label ELSE17
+push this 6
+push constant 1
+eq
+push this 6
+push constant 3
+eq
+or
+not
+if-goto ELSE18
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF18
+label ELSE18
+label END_IF18
+label END_IF17
+goto END_IF16
+label ELSE16
+push this 0
+push constant 116
+eq
+not
+if-goto ELSE19
+push this 6
+push constant 0
+eq
+not
+if-goto ELSE20
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 0
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF20
+label ELSE20
+push this 6
+push constant 1
+eq
+not
+if-goto ELSE21
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF21
+label ELSE21
+push this 6
+push constant 2
+eq
+not
+if-goto ELSE22
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF22
+label ELSE22
+push this 6
+push constant 3
+eq
+not
+if-goto ELSE23
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF23
+label ELSE23
+label END_IF23
+label END_IF22
+label END_IF21
+label END_IF20
+goto END_IF19
+label ELSE19
+push this 0
+push constant 108
+eq
+not
+if-goto ELSE24
+push this 6
+push constant 0
+eq
+not
+if-goto ELSE25
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF25
+label ELSE25
+push this 6
+push constant 1
+eq
+not
+if-goto ELSE26
+push constant 3
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF26
+label ELSE26
+push this 6
+push constant 2
+eq
+not
+if-goto ELSE27
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF27
+label ELSE27
+push this 6
+push constant 3
+eq
+not
+if-goto ELSE28
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF28
+label ELSE28
+label END_IF28
+label END_IF27
+label END_IF26
+label END_IF25
+goto END_IF24
+label ELSE24
+push this 0
+push constant 106
+eq
+not
+if-goto ELSE29
+push this 6
+push constant 0
+eq
+not
+if-goto ELSE30
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF30
+label ELSE30
+push this 6
+push constant 1
+eq
+not
+if-goto ELSE31
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF31
+label ELSE31
+push this 6
+push constant 2
+eq
+not
+if-goto ELSE32
+push constant 2
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF32
+label ELSE32
+push this 6
+push constant 3
+eq
+not
+if-goto ELSE33
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF33
+label ELSE33
+label END_IF33
+label END_IF32
+label END_IF31
+label END_IF30
+goto END_IF29
+label ELSE29
+push this 0
+push constant 111
+eq
+not
+if-goto ELSE34
+push constant 1
+pop this 1
+push constant 0
+pop this 2
+push constant 0
+push this 5
+add
+push static 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push this 5
+add
+push static 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push this 5
+add
+push static 3
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push this 5
+add
+push static 4
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF34
+label ELSE34
+label END_IF34
+label END_IF29
+label END_IF24
+label END_IF19
+label END_IF16
+label END_IF13
+label END_IF10
+push constant 0
+return
+function Piece.set 0
+push argument 0
+pop pointer 0
+push argument 2
+push constant 0
+eq
+not
+if-goto ELSE35
+push argument 1
+push this 7
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF35
+label ELSE35
+push argument 2
+push constant 1
+eq
+not
+if-goto ELSE36
+push argument 1
+push this 8
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF36
+label ELSE36
+push argument 2
+push constant 2
+eq
+not
+if-goto ELSE37
+push argument 1
+push this 9
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF37
+label ELSE37
+push argument 2
+push constant 3
+eq
+not
+if-goto ELSE38
+push argument 1
+push this 10
+add
+push constant 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+goto END_IF38
+label ELSE38
+label END_IF38
+label END_IF37
+label END_IF36
+label END_IF35
+push constant 0
+return
+function Piece.get 1
+push argument 0
+pop pointer 0
+push argument 2
+push constant 0
+eq
+not
+if-goto ELSE39
+push argument 1
+push this 7
+add
+pop pointer 1
+push that 0
+pop local 0
+goto END_IF39
+label ELSE39
+push argument 2
+push constant 1
+eq
+not
+if-goto ELSE40
+push argument 1
+push this 8
+add
+pop pointer 1
+push that 0
+pop local 0
+goto END_IF40
+label ELSE40
+push argument 2
+push constant 2
+eq
+not
+if-goto ELSE41
+push argument 1
+push this 9
+add
+pop pointer 1
+push that 0
+pop local 0
+goto END_IF41
+label ELSE41
+push argument 2
+push constant 3
+eq
+not
+if-goto ELSE42
+push argument 1
+push this 10
+add
+pop pointer 1
+push that 0
+pop local 0
+goto END_IF42
+label ELSE42
+label END_IF42
+label END_IF41
+label END_IF40
+label END_IF39
+push local 0
+return
+function Piece.getXPos 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 3
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+return
+function Piece.getYPos 1
+push argument 0
+pop pointer 0
+push argument 1
+push this 4
+add
+pop pointer 1
+push that 0
+pop local 0
+push local 0
+return
+function Piece.printPiece 2
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.drawPiece 1
+pop temp 0
+push constant 0
+pop local 0
+label WHILE4
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE4
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE43
+push constant 0
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printBlock 4
+pop temp 0
+goto END_IF43
+label ELSE43
+label END_IF43
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE44
+push constant 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printBlock 4
+pop temp 0
+goto END_IF44
+label ELSE44
+label END_IF44
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE45
+push constant 2
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printBlock 4
+pop temp 0
+goto END_IF45
+label ELSE45
+label END_IF45
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE46
+push constant 3
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printBlock 4
+pop temp 0
+goto END_IF46
+label ELSE46
+label END_IF46
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE4
+label END_WHILE4
+push constant 0
+return
+function Piece.erasePiece 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE5
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE5
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE47
+push constant 0
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printBlock 4
+pop temp 0
+goto END_IF47
+label ELSE47
+label END_IF47
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE48
+push constant 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printBlock 4
+pop temp 0
+goto END_IF48
+label ELSE48
+label END_IF48
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE49
+push constant 2
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printBlock 4
+pop temp 0
+goto END_IF49
+label ELSE49
+label END_IF49
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE50
+push constant 3
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printBlock 4
+pop temp 0
+goto END_IF50
+label ELSE50
+label END_IF50
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE5
+label END_WHILE5
+push constant 0
+return
+function Piece.printBlock 0
+push argument 0
+pop pointer 0
+push argument 3
+call Screen.setColor 1
+pop temp 0
+push constant 352
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+push constant 16
+push this 12
+call Math.multiply 2
+add
+push constant 10
+push constant 16
+push argument 2
+call Math.multiply 2
+add
+push constant 16
+push this 11
+call Math.multiply 2
+add
+push constant 366
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+push constant 16
+push this 12
+call Math.multiply 2
+add
+push constant 24
+push constant 16
+push argument 2
+call Math.multiply 2
+add
+push constant 16
+push this 11
+call Math.multiply 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return
+function Piece.checkRows 0
+push argument 0
+pop pointer 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 7
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 1
+push this 7
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 2
+push this 7
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 3
+push this 7
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 8
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 1
+push this 8
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 2
+push this 8
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 3
+push this 8
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 1
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 2
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 3
+push this 9
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 1
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 2
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+push constant 3
+push this 10
+add
+pop pointer 1
+push that 0
+call Output.printInt 1
+pop temp 0
+push constant 32
+call Output.printChar 1
+pop temp 0
+call Output.println 0
+pop temp 0
+push constant 0
+return
+function Piece.moveDown 1
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.erasePiece 1
+pop temp 0
+push this 11
+push constant 1
+add
+pop this 11
+push constant 0
+pop local 0
+label WHILE6
+push local 0
+push constant 5
+eq
+not
+not
+if-goto END_WHILE6
+push local 0
+push this 4
+add
+push local 0
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE6
+label END_WHILE6
+push constant 0
+return
+function Piece.moveLeft 1
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.erasePiece 1
+pop temp 0
+push this 12
+push constant 1
+sub
+pop this 12
+push constant 0
+pop local 0
+label WHILE7
+push local 0
+push constant 5
+eq
+not
+not
+if-goto END_WHILE7
+push local 0
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE7
+label END_WHILE7
+push constant 0
+return
+function Piece.moveRight 1
+push argument 0
+pop pointer 0
+push pointer 0
+call Piece.erasePiece 1
+pop temp 0
+push this 12
+push constant 1
+add
+pop this 12
+push constant 0
+pop local 0
+label WHILE8
+push local 0
+push constant 5
+eq
+not
+not
+if-goto END_WHILE8
+push local 0
+push this 3
+add
+push local 0
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE8
+label END_WHILE8
+push constant 0
+return
+function Piece.rotateAndCheck 1
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push pointer 0
+call Piece.erasePiece 1
+pop temp 0
+push pointer 0
+call Piece.rotate 1
+pop temp 0
+push pointer 0
+call Piece.checkWall 1
+pop local 0
+push local 0
+push constant 0
+not
+eq
+not
+if-goto ELSE51
+push pointer 0
+call Piece.unrotate 1
+pop temp 0
+goto END_IF51
+label ELSE51
+push pointer 0
+call Piece.erasePiece 1
+pop temp 0
+label END_IF51
+push constant 0
+return
+function Piece.rotate 0
+push argument 0
+pop pointer 0
+push this 6
+push constant 1
+add
+pop this 6
+push this 6
+push constant 3
+gt
+not
+if-goto ELSE52
+push constant 0
+pop this 6
+goto END_IF52
+label ELSE52
+label END_IF52
+push pointer 0
+call Piece.setFieldPos 1
+pop temp 0
+push constant 0
+return
+function Piece.unrotate 0
+push argument 0
+pop pointer 0
+push this 6
+push constant 1
+sub
+pop this 6
+push this 6
+push constant 0
+lt
+not
+if-goto ELSE53
+push constant 3
+pop this 6
+goto END_IF53
+label ELSE53
+label END_IF53
+push pointer 0
+call Piece.setFieldPos 1
+pop temp 0
+push constant 0
+return
+function Piece.checkLeftWall 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE9
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE9
+push local 1
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+push constant 0
+lt
+push local 1
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+push constant 13
+gt
+or
+not
+if-goto ELSE54
+push constant 0
+not
+pop local 0
+goto END_IF54
+label ELSE54
+label END_IF54
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE9
+label END_WHILE9
+push local 0
+return
+function Piece.checkRightWall 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE10
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE10
+push local 1
+push this 3
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+push constant 9
+gt
+push local 1
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+push constant 13
+gt
+or
+not
+if-goto ELSE55
+push constant 0
+not
+pop local 0
+goto END_IF55
+label ELSE55
+label END_IF55
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE10
+label END_WHILE10
+push local 0
+return
+function Piece.checkBottomWall 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE11
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE11
+push local 1
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+add
+push constant 13
+gt
+not
+if-goto ELSE56
+push constant 0
+not
+pop local 0
+goto END_IF56
+label ELSE56
+label END_IF56
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE11
+label END_WHILE11
+push local 0
+return
+function Piece.checkTopWall 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push constant 0
+pop local 1
+label WHILE12
+push local 1
+push constant 5
+eq
+not
+not
+if-goto END_WHILE12
+push local 1
+push this 4
+add
+pop pointer 1
+push that 0
+push constant 1
+sub
+push constant 0
+lt
+not
+if-goto ELSE57
+push constant 0
+not
+pop local 0
+goto END_IF57
+label ELSE57
+label END_IF57
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE12
+label END_WHILE12
+push local 0
+return
+function Piece.checkWall 5
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+push pointer 0
+call Piece.checkLeftWall 1
+pop local 1
+push pointer 0
+call Piece.checkRightWall 1
+pop local 2
+push pointer 0
+call Piece.checkBottomWall 1
+pop local 3
+push pointer 0
+call Piece.checkTopWall 1
+pop local 4
+push local 1
+push local 2
+or
+push local 3
+or
+push local 4
+or
+not
+if-goto ELSE58
+push constant 0
+not
+pop local 0
+goto END_IF58
+label ELSE58
+label END_IF58
+push local 0
+return
+function Piece.pickType 1
+push argument 0
+push constant 0
+eq
+not
+if-goto ELSE59
+push constant 105
+pop local 0
+goto END_IF59
+label ELSE59
+push argument 0
+push constant 1
+eq
+not
+if-goto ELSE60
+push constant 122
+pop local 0
+goto END_IF60
+label ELSE60
+push argument 0
+push constant 2
+eq
+not
+if-goto ELSE61
+push constant 115
+pop local 0
+goto END_IF61
+label ELSE61
+push argument 0
+push constant 3
+eq
+not
+if-goto ELSE62
+push constant 116
+pop local 0
+goto END_IF62
+label ELSE62
+push argument 0
+push constant 4
+eq
+not
+if-goto ELSE63
+push constant 108
+pop local 0
+goto END_IF63
+label ELSE63
+push argument 0
+push constant 5
+eq
+not
+if-goto ELSE64
+push constant 106
+pop local 0
+goto END_IF64
+label ELSE64
+push argument 0
+push constant 6
+eq
+not
+if-goto ELSE65
+push constant 111
+pop local 0
+goto END_IF65
+label ELSE65
+label END_IF65
+label END_IF64
+label END_IF63
+label END_IF62
+label END_IF61
+label END_IF60
+label END_IF59
+push local 0
+return
+function Piece.printNextPiece 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE13
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE13
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE66
+push constant 0
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF66
+label ELSE66
+label END_IF66
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE67
+push constant 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF67
+label ELSE67
+label END_IF67
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE68
+push constant 2
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF68
+label ELSE68
+label END_IF68
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE69
+push constant 3
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+not
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF69
+label ELSE69
+label END_IF69
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE13
+label END_WHILE13
+push constant 0
+return
+function Piece.eraseNextPiece 2
+push argument 0
+pop pointer 0
+push constant 0
+pop local 0
+label WHILE14
+push local 0
+push constant 4
+eq
+not
+not
+if-goto END_WHILE14
+push local 0
+push this 7
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE70
+push constant 0
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF70
+label ELSE70
+label END_IF70
+push local 0
+push this 8
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE71
+push constant 1
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF71
+label ELSE71
+label END_IF71
+push local 0
+push this 9
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE72
+push constant 2
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF72
+label ELSE72
+label END_IF72
+push local 0
+push this 10
+add
+pop pointer 1
+push that 0
+push constant 1
+eq
+not
+if-goto ELSE73
+push constant 3
+pop local 1
+push pointer 0
+push local 0
+push local 1
+push constant 0
+call Piece.printNextBlock 4
+pop temp 0
+goto END_IF73
+label ELSE73
+label END_IF73
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE14
+label END_WHILE14
+push constant 0
+return
+function Piece.printNextBlock 0
+push argument 0
+pop pointer 0
+push argument 3
+call Screen.setColor 1
+pop temp 0
+push constant 108
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+push constant 152
+push constant 16
+push argument 2
+call Math.multiply 2
+add
+push constant 122
+push constant 16
+push argument 1
+call Math.multiply 2
+add
+push constant 166
+push constant 16
+push argument 2
+call Math.multiply 2
+add
+call Screen.drawRectangle 4
+pop temp 0
+push constant 0
+return

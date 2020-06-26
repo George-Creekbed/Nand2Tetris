@@ -1,0 +1,642 @@
+<class>
+	<keyword> class </keyword>
+	<identifier> KIND: class_name **+ Main +** </identifier>
+	<symbol> { </symbol>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<keyword> void </keyword>
+		<identifier> KIND: subroutine_name **+ main +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ TetrisGame +** </identifier>
+				<identifier> TYPE: TetrisGame - KIND: var - INDEX: 0 **+ game +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ Array +** </identifier>
+				<identifier> TYPE: Array - KIND: var - INDEX: 1 **+ output +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 2 **+ player +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 3 **+ random_seed +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Array - KIND: var - INDEX: 1 **+ output +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Main +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ promptName +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 2 **+ player +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: Array - KIND: var - INDEX: 1 **+ output +** used </identifier>
+							<symbol> [ </symbol>
+							<expression>
+								<term>
+									<integerConstant> 0 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ] </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 3 **+ random_seed +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: Array - KIND: var - INDEX: 1 **+ output +** used </identifier>
+							<symbol> [ </symbol>
+							<expression>
+								<term>
+									<integerConstant> 1 </integerConstant>
+								</term>
+							</expression>
+							<symbol> ] </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: TetrisGame - KIND: var - INDEX: 0 **+ game +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ TetrisGame +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: String - KIND: var - INDEX: 2 **+ player +** used </identifier>
+									</term>
+								</expression>
+									<symbol> , </symbol>
+								<expression>
+									<term>
+										<identifier> TYPE: int - KIND: var - INDEX: 3 **+ random_seed +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: TetrisGame - KIND: var - INDEX: 0 **+ game +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ run +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 2 **+ player +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: Array - KIND: var - INDEX: 1 **+ output +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: TetrisGame - KIND: var - INDEX: 0 **+ game +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+		</subroutineBody>
+	</subroutineDec>
+	<subroutineDec>
+		<keyword> function </keyword>
+		<identifier> KIND: class_name **+ Array +** </identifier>
+		<identifier> KIND: subroutine_name **+ promptName +** </identifier>
+		<symbol> ( </symbol>
+		<parameterList>
+		</parameterList>
+		<symbol> ) </symbol>
+		<subroutineBody>
+			<symbol> { </symbol>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 0 **+ player +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<keyword> int </keyword>
+				<identifier> TYPE: int - KIND: var - INDEX: 1 **+ random_seed +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ Array +** </identifier>
+				<identifier> TYPE: Array - KIND: var - INDEX: 2 **+ out +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output1 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 4 **+ output2 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 5 **+ output3 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 6 **+ output4 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<varDec>
+				<keyword> var </keyword>
+				<identifier> KIND: class_name **+ String +** </identifier>
+				<identifier> TYPE: String - KIND: var - INDEX: 7 **+ output5 +** defined </identifier>
+				<symbol> ; </symbol>
+			</varDec>
+			<statements>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Array - KIND: var - INDEX: 2 **+ out +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Array +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ new +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<integerConstant> 2 </integerConstant>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output1 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> A TETRIS GAME </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 4 **+ output2 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> written in the Jack language by G.G. </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 5 **+ output3 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Please enter your name (10 chars max):  </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 6 **+ output4 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> Please enter a number (max 32767):  </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 7 **+ output5 +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<stringConstant> controls: upwards arrow - rotate piece; arrows - movement </stringConstant>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 4 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 25 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output1 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 6 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 15 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 4 **+ output2 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 12 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 4 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ printString +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<identifier> TYPE: String - KIND: var - INDEX: 7 **+ output5 +** used </identifier>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 16 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 10 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: int - KIND: var - INDEX: 1 **+ random_seed +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Keyboard +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ readInt +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: String - KIND: var - INDEX: 6 **+ output4 +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Output +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ moveCursor +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 20 </integerConstant>
+							</term>
+						</expression>
+							<symbol> , </symbol>
+						<expression>
+							<term>
+								<integerConstant> 8 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 0 **+ player +** used </identifier>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> KIND: class_name **+ Keyboard +** </identifier>
+							<symbol> . </symbol>
+							<identifier> KIND: subroutine_name **+ readLine +** </identifier>
+							<symbol> ( </symbol>
+							<expressionList>
+								<expression>
+									<term>
+										<identifier> TYPE: String - KIND: var - INDEX: 5 **+ output3 +** used </identifier>
+									</term>
+								</expression>
+							</expressionList>
+							<symbol> ) </symbol>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Array - KIND: var - INDEX: 2 **+ out +** used </identifier>
+					<symbol> [ </symbol>
+					<expression>
+						<term>
+							<integerConstant> 0 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ] </symbol>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: String - KIND: var - INDEX: 0 **+ player +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<letStatement>
+					<keyword> let </keyword>
+					<identifier> TYPE: Array - KIND: var - INDEX: 2 **+ out +** used </identifier>
+					<symbol> [ </symbol>
+					<expression>
+						<term>
+							<integerConstant> 1 </integerConstant>
+						</term>
+					</expression>
+					<symbol> ] </symbol>
+					<symbol> = </symbol>
+					<expression>
+						<term>
+							<identifier> TYPE: int - KIND: var - INDEX: 1 **+ random_seed +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</letStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Sys +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ wait +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+						<expression>
+							<term>
+								<integerConstant> 500 </integerConstant>
+							</term>
+						</expression>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> KIND: class_name **+ Screen +** </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ clearScreen +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 3 **+ output1 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 4 **+ output2 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 5 **+ output3 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 6 **+ output4 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<doStatement>
+					<keyword> do </keyword>
+					<identifier> TYPE: String - KIND: var - INDEX: 7 **+ output5 +** used </identifier>
+					<symbol> . </symbol>
+					<identifier> KIND: subroutine_name **+ dispose +** </identifier>
+					<symbol> ( </symbol>
+					<expressionList>
+					</expressionList>
+					<symbol> ) </symbol>
+					<symbol> ; </symbol>
+				</doStatement>
+				<returnStatement>
+					<keyword> return </keyword>
+					<expression>
+						<term>
+							<identifier> TYPE: Array - KIND: var - INDEX: 2 **+ out +** used </identifier>
+						</term>
+					</expression>
+					<symbol> ; </symbol>
+				</returnStatement>
+			</statements>
+			<symbol> } </symbol>
+		</subroutineBody>
+	</subroutineDec>
+	<symbol> } </symbol>
+</class>
