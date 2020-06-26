@@ -1,0 +1,211 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Screen.jack
+
+/**
+ * A library of functions for displaying graphics on the screen.
+ * The Hack physical screen consists of 512 rows (indexed 0..511, top to bottom)
+ * of 256 pixels each (indexed 0..255, left to right). The top left pixel on 
+ * the screen is indexed (0,0).
+ */
+class Screen {
+	
+	static Array screen;
+	static int color;
+
+    /** Initializes the Screen. */
+    function void init() {
+		let screen = 16384;
+		let color = 0;
+		
+		return;
+    }
+
+    /** Erases the entire screen. */
+    function void clearScreen() {
+		var int i;
+		
+        let i = 0;
+        while( i < 8192 ) {
+            let screen[i] = 0;	// false = 0 = white color
+            let i = i + 1;
+        }
+        
+        return;
+    }
+
+    /** Sets the current color, to be used for all subsequent drawXXX commands.
+     *  Black is represented by true, white by false. */
+    function void setColor(boolean b) {
+		if (b) {let color = 1;}
+		else {let color = 0;}
+		
+		return;
+    }
+
+    /** Draws the (x,y) pixel, using the current color. */
+    function void drawPixel(int x, int y) {
+		var int address, single_bit, value, two_to_single_bit, i;
+		
+		let address = (32 * y) + (x / 16);
+		let single_bit = x - (16 * (x / 16));	// e.g. 255 = 240 + 15 = 16 * int(255/16) + 15, we want 15
+		let value = Memory.peek(screen + address);
+		
+		// calculate bit-mask, e.g. for 255 -> 15 -> 10000000000000000
+		let two_to_single_bit = 1;
+		let i = 1;
+		while (~(i > single_bit)) {
+			let two_to_single_bit = two_to_single_bit * 2;
+			let i = i + 1;
+		}
+		
+		let value = value | two_to_single_bit;
+		do Memory.poke(screen + address, value);
+		
+		return;
+    }
+
+    /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
+    function void drawLine(int x1, int y1, int x2, int y2) {
+		var int a, b, dx, dy, diff;
+		
+		let a = 0;
+		let b = 0;
+		let dx = x2 - x1;
+		let dy = y2 - y1;
+		let diff = 0;
+		
+		if (dy = 0) {		// horizontal
+			if (dx > 0) {
+				while (~(a > dx)) {
+					do Screen.drawPixel(x1 + a, y1);
+					let a = a + 1;
+				}
+			}
+			else {
+				while (~(a < dx)) {
+					do Screen.drawPixel(x1 + a, y1);
+					let a = a - 1;
+				}
+			}
+		}
+		else { if (dx = 0) {		// vertical
+			if (dy > 0) {
+				while (~(b > dy)) {
+					do Screen.drawPixel(x1, y1 + b);
+					let b = b + 1;
+				}
+			}
+			else {
+				while (~(b < dy)) {
+					do Screen.drawPixel(x1, y1 + b);
+					let b = b - 1;
+				}
+			}
+		}
+		else {if ((dx > 0) & (dy > 0 )) {		// south-east
+			while ((~(a > dx)) & (~(b > dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				let diff = (a * dy) - (b * dx);
+				if (diff < 0) {
+					let a = a + 1;
+					let diff = diff + dy;
+				}
+				else {
+					let b = b + 1;
+					let diff = diff - dx;
+				}
+			}
+		}
+		else { if ((dx < 0) & (dy > 0 )) {		// south-west
+			while ((~(a < dx)) & (~(b > dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				let diff = (a * dy) - (b * dx);
+				if (diff > 0) {
+					let a = a - 1;
+					let diff = diff - dy;
+				}
+				else {
+					let b = b + 1;
+					let diff = diff - dx;
+				}
+			}
+		}
+		else { if ((dx < 0) & (dy < 0 )) {		// north-west
+			while ((~(a < dx)) & (~(b < dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				let diff = (a * dy) - (b * dx);
+				if (diff < 0) {
+					let a = a - 1;
+					let diff = diff - dy;
+				}
+				else {
+					let b = b - 1;
+					let diff = diff + dx;
+				}
+			}
+		}
+		else { if ((dx > 0) & (dy < 0 )) {		// north-east
+			while ((~(a > dx)) & (~(b < dy))) {
+				do Screen.drawPixel(x1 + a, y1 + b);
+				
+				let diff = (a * dy) - (b * dx);
+				if (diff > 0) {
+					let a = a + 1;
+					let diff = diff + dy;
+				}
+				else {
+					let b = b - 1;
+					let diff = diff + dx;
+				}
+			}
+		}}}}}}
+		
+		return;
+    }
+
+    /** Draws a filled rectangle whose top left corner is (x1, y1)
+     * and bottom right corner is (x2,y2), using the current color. */
+    function void drawRectangle(int x1, int y1, int x2, int y2) {
+		var int j;
+		
+		let j = 0;
+		while (~(j > (y2 - y1))) {
+			do Screen.drawLine(x1, y1 + j, x2, y1 + j);
+			let j = j + 1;
+		}
+		
+		return;
+    }
+
+    /** Draws a filled circle of radius r<=181 around (x,y), using the current color. */
+    function void drawCircle(int x, int y, int r) {
+		var int dx, dy;
+        var int r2;
+        
+        let dy = -r;
+        let r2 = r * r;
+        while (~(dy > r)) {
+            let dx = Math.sqrt(r2 - (dy * dy));				// Pitagora
+            do Screen.drawLine(x - dx, y + dy, x + dx, y + dy);
+            let dy = dy + 1;
+        }
+        
+        return;
+    }
+    
+    /** Draws an empty rectangle whose top left corner is (x1, y1)
+     * and bottom right corner is (x2,y2), using the current color. */
+    function void drawEmptyRectangle(int x1, int y1, int x2, int y2) {
+		do Screen.drawLine(x1, y1, x2, y1);
+		do Screen.drawLine(x2, y1, x2, y2);
+		do Screen.drawLine(x1, y2, x2, y2);
+		do Screen.drawLine(x1, y1, x1, y2);
+		
+		return;
+    }
+}
